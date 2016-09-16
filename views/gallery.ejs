@@ -51,7 +51,7 @@
               <h1 id="ibm-pagetitle-h1" class="ibm-h1 ibm-bold">Photo Gallery</h1>
             </div>
             <div class="ibm-col-6-1">
-              <% if (user && (user.accountType == 'Admin')) { %>
+              <% if (user && (user.accountType == 'Admin' || user.accountType == 'Blogger')) { %>
                 <p class="ibm-button-link">
                   <a href="/dashboard/gallery/add-photos" class="ibm-btn-pri ibm-btn-white full-width-btn">Add Photos</a>
                 </p>
@@ -125,7 +125,7 @@
       <div class="ibm-col-6-3 ibm-left">
         <h1 class="ibm-h1 image-title"></h1>
         <h3 class="ibm-h3 image-description"></h3>
-        <% if (user && (user.accountType == 'Admin')) { %>
+        <% if (user && (user.accountType == 'Admin' || user.accountType == 'Blogger')) { %>
           <p class="ibm-button-link">
             <a href="/dashboard/gallery" class="ibm-btn-pri">Edit Photo</a>
           </p>

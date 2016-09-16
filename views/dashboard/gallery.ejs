@@ -242,7 +242,7 @@
         });
 
         $('.delete-btn-confirm').on('click', function() {
-          $.post("/gallery/delete_photo", { id : row.id }, function(data) {
+          $.post("/dashboard/gallery/delete_photo", { id : row.id }, function(data) {
             location.reload();
           });
 
