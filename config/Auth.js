@@ -17,7 +17,6 @@ var Auth = {
 		if (req.user) {
 			next();
 		} else {
-			res.redirect('/');
 		}
 	},
 	isAdmin : function(req, res, next) {

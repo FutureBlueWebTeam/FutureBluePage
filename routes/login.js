@@ -16,10 +16,13 @@ router.get('/', Auth.isLoggedOut, function(req, res, next) {
 });
 
 /* Handles logging into the site */
-router.post('/', Auth.isLoggedOut, passport.authenticate('local-login', {
-	successRedirect: '/',
+router.post('/', Auth.isLoggedOut, function(req, res, next){
+    console.log(req.session.redirectTo);
+    passport.authenticate('local-login', {
+	successRedirect: req.session.redirectTo || "/",
 	failureRedirect: '/login',
 	failureFlash: true
-}));
+    })(req, res, next);
+});
 
 module.exports = router;
