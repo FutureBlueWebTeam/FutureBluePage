@@ -17,12 +17,15 @@ var Auth = {
 		if (req.user) {
 			next();
 		} else {
+            req.session.redirectTo = req.originalUrl;
+			res.redirect('/login');
 		}
 	},
 	isAdmin : function(req, res, next) {
 		if (req.user && req.user.accountType === "Admin") {
 			next();
 		} else {
+            req.session.redirectTo = req.originalUrl;
 			res.redirect('/login');
 		}
 	},
@@ -30,6 +33,7 @@ var Auth = {
 		if (req.user && (req.user.accountType === "Blogger" || req.user.accountType === "Admin")) {
 			next();
 		} else {
+            req.session.redirectTo = req.originalUrl;
 			res.redirect('/login');
 		}
 	},
@@ -37,6 +41,7 @@ var Auth = {
 		if (req.user && req.user.accountType === "Member") {
 			next();
 		} else {
+            req.session.redirectTo = req.originalUrl;
 			res.redirect('/login');
 		}
 	},
@@ -44,6 +49,7 @@ var Auth = {
 		if (req.user && req.user.accountType === "Alumni") {
 			next();
 		} else {
+            req.session.redirectTo = req.originalUrl;
 			res.redirect('/login');
 		}
 	},
@@ -51,6 +57,7 @@ var Auth = {
 		if (req.user && req.user.accountType === "Banned") {
 			next();
 		} else {
+            req.session.redirectTo = req.originalUrl;
 			res.redirect('/login');
 		}
 	}
