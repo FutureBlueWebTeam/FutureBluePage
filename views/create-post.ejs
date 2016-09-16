@@ -190,7 +190,7 @@
 
           $("#confirm-delete").on('click', function() {
             $.post("/dashboard/blog/edit/delete_post", { id : <%= post.id %> }, function(data) {
-              window.location.replace("dashboard/blog");
+              window.location.replace("/dashboard/blog");
             });
 
             return false;
