@@ -118,7 +118,7 @@
   </div>
 
   <div class="ibm-common-overlay full-width" data-widget="overlay" id="overlay">
-    <form id="edit-image-form" class="ibm-row-form" method="POST" action="dashboard/gallery/update_photo">
+    <form id="edit-image-form" class="ibm-row-form" method="POST" action="/dashboard/gallery/update_photo">
       <div class="ibm-columns">
         <div class="ibm-col-6-3">
           <div class="overlay-image"></div>
@@ -220,7 +220,7 @@
         $('.photo-details').html("This photo was posted on " + row.datePosted + " by " + row.firstName + " "+ row.lastName);
 
         $('.save-btn').on('click', function() {
-          $.post("dashboard/gallery/edit_photo", { 
+          $.post("/dashboard/gallery/edit_photo", { 
             id : row.id,
             title : $('input[name="title"]').val(),
             description : $('input[name="description"]').val(),
@@ -242,7 +242,7 @@
         });
 
         $('.delete-btn-confirm').on('click', function() {
-          $.post("dashboard/gallery/delete_photo", { id : row.id }, function(data) {
+          $.post("/gallery/delete_photo", { id : row.id }, function(data) {
             location.reload();
           });
 
