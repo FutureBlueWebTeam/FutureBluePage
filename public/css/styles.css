@@ -110,3 +110,7 @@ a.full-width-btn {
     color: red;
     padding: 10px 0 20px 0;
 }
+.ibm-type .ibm-sitenav-menu-list>ul>li>a{
+    min-width: 50px;
+    text-align: center;
+}
