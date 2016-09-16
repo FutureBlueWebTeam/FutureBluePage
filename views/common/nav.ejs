@@ -51,6 +51,9 @@
           <a role="menuitem" href="/dashboard">Dashboard</a>
         </li>
       <% } %>
+      <li role="presentation" class="<%= typeof home != 'undefined' ? about : '' %>">
+        <a role="menuitem" href="/">Home</a>
+      </li>
       <li role="presentation" class="<%= typeof about != 'undefined' ? about : '' %>">
         <a role="menuitem" href="/about">About</a>
       </li>

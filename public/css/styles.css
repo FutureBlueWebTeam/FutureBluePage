@@ -106,3 +106,7 @@ a.full-width-btn {
 .ibm-data-table tr {
 	cursor: pointer;
 }
+.error.message {
+    color: red;
+    padding: 10px 0 20px 0;
+}

@@ -391,9 +391,9 @@ router.post('/blog/edit/delete_post', Auth.isBlogger, function(req, res, next) {
 			});
 			
 			return;
-		}
-
-		res.send({ message : result });
+		}else{
+            res.redirect('/blog');
+        } 
 	});
 });
 

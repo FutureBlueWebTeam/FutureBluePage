@@ -189,7 +189,7 @@
           e.stopPropagation();
 
           $("#confirm-delete").on('click', function() {
-            $.post("dashboard/blog/edit/delete_post", { id : <%= post.id %> }, function(data) {
+            $.post("/dashboard/blog/edit/delete_post", { id : <%= post.id %> }, function(data) {
               window.location.replace("dashboard/blog");
             });
 

@@ -33,7 +33,7 @@ module.exports = function(passport) {
                     internshipStart : new Date(req.body.internshipStart).toISOString(),
                     internshipEnd : new Date(req.body.internshipEnd).toISOString(),
                     password : bcrypt.hashSync(password),
-                    accountType : 'Member',
+                    accountType : email === "fubuadmin@ca.ibm.com" ? "Admin" : 'Member', //Remove dis
                     dateJoined : new Date().toISOString()
                 }
 
@@ -57,11 +57,11 @@ module.exports = function(passport) {
     function(req, email, password, done) {
         knex.select().table('users').where('email', email).then(function(rows) {
             if (!rows.length) {
-                return done(null, false, req.flash('message', 'No user with that email exists'));
+                return done(null, false, req.flash('message', 'No user with that email exists.'));
             }
 
             if (!bcrypt.compareSync(password, rows[0].password)) {
-                return done(null, false, req.flash('message', 'Oops! You entered the wrong password'));
+                return done(null, false, req.flash('message', 'Oops! You entered the wrong password.'));
             }
 
             return done(null, rows[0]);

@@ -71,28 +71,28 @@
                     <p>
                       <label for="E-mail">Email: </label>
                       <span>
-                        <input type="text" name="email" placeholder="E-mail address">
+                        <input required type="email" name="email" placeholder="E-mail address">
                         <a class="ibm-email-link" title="Email Info">Info</a>
                       </span>
                     </p>
                     <p>
                       <label for="Password">Password: </label>
                       <span>
-                        <input type="password" name="password" placeholder="Password">
+                        <input required type="password" name="password" placeholder="Password">
                         <a class="ibm-secure-link" title="Password Info">Info</a>
                       </span>
                     </p>
+                    <% if (message) { %>
+                    <div class="error message" id="errorMessage">             
+                        <%= message %>
+                    </div>
+                    <% } %>
                     <p>
                       <input type="Submit" class="ibm-btn-pri ibm-btn-blue-50" name="login" value="Login">
                     </p>
                     <p>
                       Don't have an account? <a href="/register">Register here</a>.
                     </p>
-                    <div class="error message" id="errorMessage">
-                      <% if (message) { %>
-                        <%= message %>
-                      <% } %>
-                    </div>
                   </form>
                 </div>
               </div>

@@ -70,28 +70,28 @@
                     <p>
                       <label for="First Name">First Name: </label>
                       <span>
-                        <input type="text" name="firstName" placeholder="First Name">
+                        <input required type="text" name="firstName" placeholder="First Name">
                         <a class="ibm-profile-link" title="Email Info">Info</a>
                       </span>
                     </p>
                     <p>
                       <label for="Last Name">Last Name: </label>
                       <span>
-                        <input type="text" name="lastName" placeholder="Last Name">
+                        <input required type="text" name="lastName" placeholder="Last Name">
                         <a class="ibm-profile-link" title="Password Info">Info</a>
                       </span>
                     </p>
                     <p>
                       <label for="Internship Start Date">Internship Start Date (Month/Year): </label>
                       <span>
-                        <input type="text" class="internshipStart" name="internshipStart" placeholder="05/15">
+                        <input required type="text" class="internshipStart" name="internshipStart" placeholder="05/15">
                         <a class="ibm-calendar-link" title="Password Info">Info</a>
                       </span>
                     </p>
                     <p>
                       <label for="Internships End Date">Internship End Date (Month/Year): </label>
                       <span>
-                        <input type="text" class="internshipEnd" name="internshipEnd" placeholder="08/16">
+                        <input required type="text" class="internshipEnd" name="internshipEnd" placeholder="08/16">
                         <a class="ibm-calendar-link" title="Password Info">Info</a>
                       </span>
                     </p>
@@ -101,19 +101,24 @@
                     <p>
                       <label for="E-mail Address">E-mail Address: </label>
                       <span>
-                        <input type="text" name="email" placeholder="E-mail address">
+                        <input required type="email" name="email" placeholder="E-mail address">
                         <a class="ibm-email-link" title="Password Info">Info</a>
                       </span>
                     </p>
                     <p>
                       <label for="Password">Password: </label>
                       <span>
-                        <input type="password" name="password" placeholder="Password">
+                        <input required type="password" name="password" placeholder="Password">
                         <a class="ibm-secure-link" title="Password Info">Info</a>
                       </span>
                     </p>
+                    <% if (message) { %>
+                    <div class="error message" id="errorMessage">             
+                        <%= message %>
+                    </div>
+                    <% } %>
                     <p>
-                      <input type="submit" class="ibm-btn-pri ibm-btn-blue-50" name="name" value="Register">
+                      <input required type="submit" class="ibm-btn-pri ibm-btn-blue-50" name="name" value="Register">
                     </p>
                     <p>
                       Already have an account? <a href="/login">Login here</a>.
