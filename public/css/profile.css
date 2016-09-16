@@ -1,0 +1,41 @@
+.dashboard-item {
+	font-size: 2px;
+	display: block !important;
+	margin: 10px 0 !important;
+}
+
+.dashboard-item > p {
+	font-size: 17px !important;
+	padding: 5px 2em;
+}
+
+#image-title, #image-description {
+	width: 100%;
+}
+
+.info-message {
+	background: #b3ecff;
+	padding: 2em 4em;
+}
+
+.info-message::before {
+	padding: 0 20px;
+}
+
+.info-message > p {
+	font-size: 17px !important;
+	padding: 0;
+	line-height: 2;
+}
+
+#signature {
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5px 0 0 5px;
+}
+
+.hidden {
+	display: none !important;
+}

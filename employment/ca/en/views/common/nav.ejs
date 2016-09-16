@@ -1,0 +1,89 @@
+<!-- MASTHEAD_BEGIN -->
+<div id="ibm-masthead" role="banner" aria-label="IBM">
+  <div id="ibm-mast-options">
+    <ul role="toolbar" aria-labelledby="ibm-masthead">
+      <li id="ibm-geo" role="presentation">
+        <a href="http://www.ibm.com/planetwide/select/selector.html" role="button" aria-label="United States selected - Choose a country">United States</a>
+      </li>
+      <li id="ibm-language" role="presentation">
+        <span class="ibm-active" role="button" aria-disabled="true">English</span> 
+        <a href="http://www.ibm.com/us/en/" lang="en-US" role="button">English</a>
+      </li>
+    </ul>
+  </div>
+  <div id="ibm-universal-nav">    
+
+    <nav role="navigation" aria-label="IBM">
+      <div id="ibm-home"><a href="http://www.ibm.com/us/en/">IBM®</a></div>
+      <div class="ibm-parent-site-name"><a href="<%= rootPath %>">Future Blue Canada</a></div>
+      <ul id="ibm-menu-links" role="toolbar" aria-label="Site map">
+        <li><a href="http://www.ibm.com/sitemap/us/en/">Site map</a></li>
+      </ul>
+    </nav>
+
+    <div id="ibm-search-module" role="search" aria-labelledby="ibm-masthead">
+      <form id="ibm-search-form" action="http://www.ibm.com/Search/" method="get">
+        <p>
+          <label for="q">IBM</label>
+          <input type="text" maxlength="100" value="" placeholder="Search" name="q" id="q" aria-label="Search"/>
+          <input type="hidden" value="18" name="v"/>
+          <input type="hidden" value="utf" name="en"/>
+          <input type="hidden" value="en" name="lang"/>
+          <input type="hidden" value="us" name="cc"/>
+          <input type="submit" id="ibm-search" class="ibm-btn-search" value="Submit"/>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- MASTHEAD_END -->
+
+<div class="ibm-sitenav-menu-container">
+  <div class="ibm-sitenav-menu-name">
+    <% if (user) { %>
+      <p>Welcome back, <%= user.firstName %> <%= user.lastName %></p>
+    <% } %>
+  </div>
+  <div class="ibm-sitenav-menu-list">
+    <ul role="menubar">
+      <% if (user) { %>
+        <li role="presentation" class="<%= typeof dashboard != 'undefined' ? dashboard : '' %>">
+          <a role="menuitem" href="/dashboard">Dashboard</a>
+        </li>
+      <% } %>
+      <li role="presentation" class="<%= typeof about != 'undefined' ? about : '' %>">
+        <a role="menuitem" href="/about">About</a>
+      </li>
+      <li role="presentation" class="<%= typeof blog != 'undefined' ? blog : '' %>">
+        <a role="menuitem" href="/blog">Blog</a>
+      </li>
+      <li role="presentation" class="<%= typeof gallery != 'undefined' ? gallery : '' %>">
+        <a role="menuitem" href="/gallery">Gallery</a>
+      </li>
+      <li role="presentation" class="ibm-haschildlist <%= typeof resources != 'undefined' ? resources : '' %>">
+        <span role="menuitem" href="/resources">Resources</span>
+        <ul role="menu">
+          <li role="presentation"><a role="menuitem" href="/resources/toronto">Toronto, ON</a></li>
+          <li role="presentation"><a role="menuitem" href="/resources/ottawa">Ottawa, ON</a></li>
+          <li role="presentation"><a role="menuitem" href="/resources/victoria">Victoria, BC</a></li>
+          <li role="presentation"><a role="menuitem" href="/resources/fredricton">Fredricton, NB</a></li>
+        </ul>
+      </li>
+      <li role="presentation" class="<%= typeof contact != 'undefined' ? contact : '' %>">
+        <a role="menuitem" href="/contact">Contact</a>
+      </li>
+      <% if (user) { %>
+        <li role="presentation">
+          <a role="menuitem" href="/logout">Logout</a>
+        </li>
+      <% } else { %>
+        <li role="presentation"  class="<%= typeof login != 'undefined' ? login : '' %>">
+          <a role="menuitem" href="/login">Login</a>
+        </li>
+        <li role="presentation"  class="<%= typeof register != 'undefined' ? register : '' %>">
+          <a role="menuitem" href="/register">Register</a>
+        </li>
+      <% } %>
+    </ul>
+  </div>
+</div>

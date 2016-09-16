@@ -1,0 +1,7 @@
+.ibm-alternate-background {
+	background-color: #5AA700 !important;
+}
+
+.ibm-previous-link, .ibm-next-link {
+	cursor: pointer;
+}

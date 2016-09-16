@@ -1,0 +1,16 @@
+.container.main {
+ 	margin-bottom: 30px !important;
+}
+
+#upload-form-field {
+	display: none;
+}
+
+.post-tag {
+	margin-bottom: 7px !important;
+}
+
+#post-title-div,
+#tags-grid .column {
+	margin-bottom: 15px !important;
+}

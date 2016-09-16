@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />      
+  <link rel="shortcut icon" href="//www.ibm.com/favicon.ico" />
+
+  <% include common/meta %>
+
+  <meta name="description" content="<= post.title >">
+  <meta name="keywords" content="<% include common/keywords %> Post, Blog, Blogs, Posts, Share" />
+
+  <title><%= post.title %></title>
+
+  <link href="/css/styles.css" rel="stylesheet" />
+  <link href="/css/post.css" rel="stylesheet" />
+  <link href="//1.www.s81c.com/common/v18/css/www.css" rel="stylesheet" />
+  <link href="//1.www.s81c.com/common/v18/css/forms.css" rel="stylesheet" />
+
+  <% include common/meta-json %>
+
+  <script src="//www.ibm.com/common/stats/ida_stats.js"></script>
+  <script src="//1.www.s81c.com/common/v18/js/www.js"></script>
+  <script src="//1.www.s81c.com/common/v18/js/forms.js"></script>
+
+  <% include common/settings %>
+</head>
+<body id="ibm-com" class="ibm-type">
+  <!-- For the Facebook share button -->
+  <div id="fb-root"></div>
+  <script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+
+  <div id="ibm-top" class="ibm-landing-page">
+    <% include common/nav %>
+
+    <!-- LEADSPACE_BEGIN -->
+    <header role="banner" aria-labelledby="ibm-pagetitle-h1">
+
+      <div id="ibm-leadspace-head" class="ibm-alternate ibm-alternate-background">
+        <div id="ibm-leadspace-body">
+          <!-- Nav trail -->
+
+          <nav role="navigation" aria-label="Breadcrumb">
+            <ul id="ibm-navigation-trail">
+              <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                <a href="/" class="breadcrumb-inverse" itemprop="url"><span itemprop="title">Home</span></a>
+              </li>
+              <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                <a href="/blog" class="breadcrumb-inverse" itemprop="url"><span itemprop="title">Blog</span></a>
+              </li>
+              <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                <a href="/blog?category=<%= post.category %>" class="breadcrumb-inverse" itemprop="url">
+                  <span itemprop="title"><%= post.category %></span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div class="ibm-columns">
+            <div class="ibm-col-6-5">
+              <h1 id="ibm-pagetitle-h1" class="ibm-h1 ibm-bold"><%= post.title %></h1>
+              <div class="ibm-mo ibm-mo--top">
+                <div class="ibm-mo__image">
+                  <img src="<%= post.profilePicturePath %>" alt="<%= post.firstName %> <%= post.lastName %>" height="auto" width="60">
+                </div>
+                <div class="ibm-mo__body">
+                  <p class="ibm-padding-bottom-0">
+                    By <a href="/user/<%= post.authorId %>"><%= post.firstName %> <%= post.lastName %></a> on <%= post.datePosted %><br>
+                    <span class="inline tag <%= post.colour %>"><%= post.category %></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="ibm-col-6-1">
+              <% if (user && (user.accountType == 'Admin' || user.accountType == 'Blogger')) { %>
+                <p class="ibm-button-link">
+                  <a href="/dashboard/blog/edit/<%= post.id %>" class="ibm-btn-pri ibm-btn-white edit-post-btn">Edit Post</a>
+                </p>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- LEADSPACE_END -->
+
+    </header>
+
+    <main role="main" aria-labelledby="ibm-pagetitle-h1">
+      <div id="ibm-pcon">
+        <div id="ibm-content">
+          <div id="ibm-content-body">
+            <div id="ibm-content-main">
+              <div class="ibm-columns">
+                <div class="ibm-col-6-5 post-content ibm-light">
+                  <%- post.htmlBody %>
+                  <% if (post.signature) { %>
+                    <div class="ibm-rule ibm-gray-30"><hr></div>
+                    <h2 class="ibm-h2">
+                      <strong>
+                        About the Author: 
+                        <a href="/user/<%= post.authorId %>"><%= post.firstName %> <%= post.lastName %></a>
+                      </strong>
+                    </h2>
+                    <div class="ibm-mo ibm-mo--top ibm-padding-bottom-1">
+                      <div class="ibm-mo__image">
+                        <img src="<%= post.profilePicturePath %>" alt="<%= post.firstName %> <%= post.lastName %>" height="auto" width="80">
+                      </div>
+                      <div class="ibm-mo__body">
+                        <p>
+                           <%= post.signature %>
+                        </p>
+                      </div>
+                    </div>
+                   
+                  <% } %>
+                  <div class="ibm-rule ibm-alternate-1 ibm-blue-40"></div>
+                  <h2 class="ibm-h2"><strong>Share this post</strong></h2>
+                  <div class="fb-share-button" data-href="http://futureblue.ca/blog/post/<%= post.id %>" data-layout="button_count"></div>
+                </div>
+                <div class="ibm-col-6-1 right-sidebar">
+                  <div class="featured-image ibm-padding-bottom-r1">
+                    <img id="featured-img" class="ibm-resize" src="<%= post.featuredImagePath %>">
+                  </div>
+                  <ul class="ibm-link-list">
+                    <h3 class="ibm-h3">Categories</h3>
+                    <% for (var key in categories) { %>
+                      <li>
+                        <p class="ibm-ind-link">
+                          <a href="/blog?page=1&show=10&category=<%=key %>" class="ibm-chevron-right-light-link">
+                            <%= key %>
+                          </a>
+                        </p>
+                      </li>
+                    <% } %>
+                  </ul>
+                  <form id="search-form" class="ibm-row-form" method="GET" action="/blog/search">
+                    <p>
+                      <label for="search-input">Search Archive</label>
+                      <span>
+                        <input id="search-input" type="text" value="<%= typeof query !== 'undefined' ? query : '' %>" name="query" placeholder="Search all posts...">
+                      </span>
+                    </p>
+                  </form>
+                  <% if (post.tags && post.tags.length > 0) { %>
+                    <div class="tags ibm-padding-bottom-1">
+                      <h3 class="ibm-h3">Tags</h3>
+                      <% post.tags.forEach(function(tag, j) { %>
+                        <span class="inline tag"><%= tag %></span>
+                      <% }); %>
+                    </div>
+                  <% } %>
+                  <% if (recentPosts.length > 0) { %>
+                    <h3 class="ibm-h3">Recent Posts</h3>
+
+                    <% recentPosts.forEach(function(recentPost, i) { %>
+                      <div class="ibm-mo ibm-mo--top">
+                        <div class="ibm-mo__image">
+                          <img src="<%= recentPost.profilePicturePath %>" alt="<%= recentPost.author %>" height="auto" width="40">
+                        </div>
+                        <div class="ibm-mo__body">
+                          <p class="ibm-padding-bottom-0">
+                            <strong><a href="/user/<%= recentPost.authorId %>"><%= recentPost.author %></a></strong> added the post <a href="/blog/post/<%= recentPost.id %>"><%= recentPost.title %></a>
+                          </p>
+                          <p class="ibm-light ibm-textcolor-gray-50">
+                            <%= recentPost.datePosted %><br>
+                            <span class="inline tag"><%= recentPost.category %></span>
+                          </p>
+                        </div>
+                      </div>
+                    <% }); %>
+                  <% } %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <% include common/footer %>
+
+  </div>
+
+</body>
+</html>

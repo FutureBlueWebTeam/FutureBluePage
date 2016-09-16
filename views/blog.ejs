@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />      
+  <link rel="shortcut icon" href="//www.ibm.com/favicon.ico" />
+
+  <% include common/meta %>
+
+  <meta name="description" content="Read articles that student interns have written on the Future Blue blog!" /> 
+  <meta name="keywords" content="<% include common/keywords %> Blog, Blogs, Post, Posts, Recent Post, Tag, Tags, Read, Information, IBM Life" />
+
+  <% if (typeof blog !== 'undefined') { %>
+    <title>Future Blue Blog</title>
+  <% } else { %>
+    <title>Search Results (Page <%= page %> of <%= totalPages %>)</title>
+  <% } %>
+
+  <!-- Stylesheets -->
+  <link href="/css/styles.css" rel="stylesheet" />
+  <link href="/css/blog.css" rel="stylesheet" />
+  <link href="//1.www.s81c.com/common/v18/css/www.css" rel="stylesheet" />
+  <link href="//1.www.s81c.com/common/v18/css/forms.css" rel="stylesheet" />
+
+  <!-- Scripts -->
+  <% include common/meta-json %>
+
+  <script src="//www.ibm.com/common/stats/ida_stats.js"></script>
+  <script src="//1.www.s81c.com/common/v18/js/www.js"></script>
+  <script src="//1.www.s81c.com/common/v18/js/forms.js"></script>
+
+  <% include common/settings %>
+</head>
+<body id="ibm-com" class="ibm-type">
+  <div id="ibm-top" class="ibm-landing-page">
+
+    <% include common/nav %>
+
+    <!-- LEADSPACE_BEGIN -->
+
+    <header role="banner" aria-labelledby="ibm-pagetitle-h1">
+
+      <div id="ibm-leadspace-head" class="ibm-alternate ibm-alternate-background">
+        <div id="ibm-leadspace-body" style="padding-bottom: 0px;">
+          <!-- Nav trail -->
+
+          <nav role="navigation" aria-label="Breadcrumb">
+            <ul id="ibm-navigation-trail">
+              <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                <a href="/" class="breadcrumb-inverse" itemprop="url"><span itemprop="title">Home</span></a>
+              </li>
+              <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                <a href="/blog" class="breadcrumb-inverse" itemprop="url"><span itemprop="title">Blog</span></a>
+              </li>
+
+              <% if (typeof category !== 'undefined') { %>
+              <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                <a href="/blog?category=<%= category %>" class="breadcrumb-inverse" itemprop="url">
+                  <span itemprop="title"><%= category %></span>
+                </a>
+              </li>
+              <% } %>
+            </ul>
+          </nav>
+          <div class="ibm-columns">
+            <div class="ibm-col-6-5">
+              <h1 id="ibm-pagetitle-h1" class="ibm-h1 ibm-bold">
+                <% if (typeof blog !== 'undefined') { %>
+                  Future Blue Blog
+                <% } else { %>
+                  Searching for: '<%= searchTerms %>'
+                <% } %>
+              </h1>
+            </div>
+            <div class="ibm-col-6-1">
+              <% if (user && (user.accountType == 'Admin' || user.accountType == 'Blogger')) { %>
+                <p class="ibm-button-link">
+                  <a href="/dashboard/blog/create-post" class="ibm-btn-pri ibm-btn-white full-width-btn">Create New Post</a>
+                </p>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- LEADSPACE_END -->
+
+    </header>
+
+    <main role="main" aria-labelledby="ibm-pagetitle-h1">
+      <div id="ibm-pcon">
+        <div id="ibm-content">
+          <div id="ibm-content-body">
+            <div id="ibm-content-main">
+              <div class="ibm-columns">
+                <div class="ibm-col-6-5">
+                  <form action="http://www.ibm.com/links" method="get" data-widget="selectlistnav">
+                    <p>
+                      <label for="search-input">Posts Per Page</label>
+                      <select id="someSelectId" name="url" aria-label="Select a server">
+                        <option value="">Select one</option>
+                        <option value="/blog?show=5" <% if (numPerPage == "5") { %>selected<% } %>>5</option>
+                        <option value="/blog?show=10" <% if (numPerPage == "10") { %>selected<% } %>>10</option>
+                        <option value="/blog?show=25" <% if (numPerPage == "25") { %>selected<% } %>>25</option>
+                        <option value="/blog?show=50" <% if (numPerPage == "50") { %>selected<% } %>>50</option>
+                      </select>
+                      <input src="//1.www.s81c.com/i/v17/buttons/short-btn.gif" alt="Go" value="Go" type="image" name="ibm-go" class="ibm-btn-go" />
+                    </p>
+                  </form>
+                  
+                  <div class="ibm-rule ibm-gray-30"><hr></div>
+
+                  <% if (posts && posts.length < 1) { %>
+                    <div class="ibm-card">
+                      <div class="ibm-card__content">
+                        <h3 class="ibm-h3">
+                          It looks like there are no posts here :(
+                        </h3>
+                        <p class="ibm-padding-bottom-0">
+                          Perhaps try a different category, or different search terms
+                        </p>
+                      </div>
+                    </div>
+                  <% } %>
+
+                  <!-- BLOG POST -->
+                  <% posts.forEach(function(post, i) { %>
+                    <div class="ibm-columns">
+                      <div class="ibm-col-6-1">
+                        <img src="<%= post.featuredImagePath %>" class="ibm-resize featured-image" alt="">
+                      </div>
+                      <div class="ibm-col-6-4">
+                        <div class="post-summary">
+                          <a href="/blog/post/<%= post.id %>" class="ibm-h2"><%= post.title %></a>
+                          <div class="ibm-mo ibm-mo--top">
+                            <div class="ibm-mo__image">
+                              <img src="<%= post.profilePicturePath %>" alt="<%= post.firstName %> <%= post.lastName %>" height="auto" width="40">
+                            </div>
+                            <div class="ibm-mo__body">
+                              <p class="ibm-padding-bottom-0 ibm-textcolor-gray-50 ibm-light">
+                                By <a href="/user/<%= post.authorId %>"><%= post.author %></a> on <%= post.datePosted %>
+                              </p>
+                            </div>
+                          </div>
+               
+                          <%- post.description %>
+
+                          <p>
+                            <span class="inline tag"><%= post.category %></span>
+                            <% if (post.tags && post.tags.length > 0) { %>
+                              <% post.tags.forEach(function(tag, j) { %>
+                                <span class="inline tag"><%= tag %></span>
+                              <% }); %>
+                            <% } %>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <% if (i < posts.length - 1) { %>
+                      <div class="ibm-rule ibm-gray-30"><hr></div>
+                    <% } %>
+                  <% }); %>
+                  <!-- END BLOG POST -->
+
+                </div>
+                <div class="ibm-col-6-1 right-sidebar">
+                  <ul class="ibm-link-list">
+                    <h3 class="ibm-h3">Categories</h3>
+                    <% for (var key in categories) { %>
+                      <li>
+                        <p class="ibm-ind-link">
+                          <a href="/blog?page=1&show=<%= numPerPage %>&category=<%=key %>" class="ibm-chevron-right-light-link">
+                            <%= key %>
+                          </a>
+                        </p>
+                      </li>
+                    <% } %>
+                  </ul>
+                  <form id="search-form" class="ibm-row-form" method="GET" action="/blog/search">
+                    <p>
+                      <label for="search-input">Search Archive</label>
+                      <span>
+                        <input id="search-input" type="text" value="<%= typeof query !== 'undefined' ? query : '' %>" name="query" placeholder="Search all posts...">
+                      </span>
+                    </p>
+                  </form>
+                </div>
+                <div class="ibm-col-1-1">
+                  <div class="ibm-rule ibm-gray-30"><hr></div>
+                  <ul role="navigation" aria-label="Pagination" class="ibm-pagination">
+                    <li>
+                      <% if (page > 1) { %>
+                        <a class="ibm-previous-link ibm-inlinelink">Previous</a>
+                      <% } else { %>
+                        <a class="ibm-previous-link ibm-inlinelink ibm-textcolor-gray-40" disabled>Previous</a>
+                      <% } %>
+                    </li>
+                    <li class="ibm-pagination__results">
+                      <strong><%= startPostIndex %>-<%= endPostIndex %></strong> of <strong><%= totalNumPosts %></strong> results
+                      </li>
+                    <li>
+                      <% if (page < totalPages) { %>
+                        <a class="ibm-next-link ibm-inlinelink ibm-icon-after">Next</a>
+                      <% } else { %>
+                        <a class="ibm-next-link ibm-inlinelink ibm-icon-after ibm-textcolor-gray-40" disabled>Next</a>
+                      <% } %>
+                    </li>
+                  </ul>
+
+                  <form id="pagination-form" method="GET">
+                    <input type="hidden" name="page" value="" />
+                    <input type="hidden" name="show" value="" />
+                    <input type="hidden" name="category" value="" />
+
+                    <% if (typeof blog === 'undefined') { %>
+                      <input id="hidden-query-input" type="hidden" name="query" value="" />
+                    <% } %>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <% include common/footer %>
+
+  </div>
+
+  <script src="/libs/jquery.min.js"></script>
+  <script src="/js/blog.js"></script>
+
+  <% if (typeof blog === 'undefined') { %>
+    <script>
+      $(document).ready(function() {
+        $('#pagination-form').submit(function(e) {
+          $('#hidden-query-input').val($('#search-input').val());
+        });
+      });
+    </script>
+  <% } %>
+
+</body>
+</html>

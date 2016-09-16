@@ -1,0 +1,19 @@
+.view-image {
+	width: 100%;
+}
+
+.gallery-image {
+	margin: 10px auto;
+	background-size: cover;
+	background-position: center;
+	height: 320px;
+	cursor: pointer;
+}
+
+#ibm-overlaywidget-overlay-content {
+	overflow: hidden;
+}
+
+.ibm-alternate-background {
+	background-color: #E71D32 !important;
+}

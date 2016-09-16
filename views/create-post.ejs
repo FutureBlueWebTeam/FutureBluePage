@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />      
+  <link rel="shortcut icon" href="//www.ibm.com/favicon.ico" />
+
+  <% include common/meta %>
+
+  <meta name="description" content="Create or modify a post on the Future Blue blog" /> 
+  <meta name="keywords" content="<% include common/keywords %> Create, Edit, Modify, Publish, Blog, Post, Blogs, Posts, Upload, Article" />
+
+  <title><%= title %></title>
+
+  <!-- Stylesheets -->
+  <link href="/css/styles.css" rel="stylesheet" />
+  <link href="/css/create-post.css" rel="stylesheet" />
+  <link href="//1.www.s81c.com/common/v18/css/www.css" rel="stylesheet" />
+  <link href="//1.www.s81c.com/common/v18/css/forms.css" rel="stylesheet" />
+  
+  <!-- Scripts -->
+  <% include common/meta-json %>
+
+  <script src="//www.ibm.com/common/stats/ida_stats.js"></script>
+  <script src="//1.www.s81c.com/common/v18/js/www.js"></script>
+  <script src="//1.www.s81c.com/common/v18/js/forms.js"></script>
+  <script src="/libs/ckeditor/ckeditor.js"></script>
+
+  <% include common/settings %>
+</head>
+<body id="ibm-com" class="ibm-type">
+  <div id="ibm-top" class="ibm-landing-page">
+    <% include common/nav %>
+
+    <!-- LEADSPACE_BEGIN -->
+    <!-- This is where you put the breadcrumbs/page title. -->
+    <header role="banner" aria-labelledby="ibm-pagetitle-h1">
+
+      <div id="ibm-leadspace-head"  class="ibm-alternate ibm-alternate-background">
+        <div id="ibm-leadspace-body" style="padding-bottom: 0px;">
+          <!-- Nav trail -->
+
+          <nav role="navigation" aria-label="Breadcrumb">
+            <ul id="ibm-navigation-trail">
+              <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                <a href="/" class="breadcrumb-inverse" itemprop="url"><span itemprop="title">Home</span></a>
+              </li>
+              <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                <a href="/dashboard" class="breadcrumb-inverse" itemprop="url"><span itemprop="title">Dashboard</span></a>
+              </li>
+              <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                <a href="/dashboard/blog" class="breadcrumb-inverse" itemprop="url"><span itemprop="title">Blog</span></a>
+              </li>
+            </ul>
+          </nav>
+          <div class="ibm-columns">
+            <div class="ibm-col-6-5">
+              <h1 id="ibm-pagetitle-h1" class="ibm-h1 ibm-bold"><%= title %></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </header>
+    <!-- LEADSPACE_END -->
+
+    <main role="main" aria-labelledby="ibm-pagetitle-h1">
+      <div id="ibm-pcon">
+        <div id="ibm-content">
+          <div id="ibm-content-body">
+            <div id="ibm-content-main">
+
+              <!-- Content goes here -->
+              <div class="ibm-columns">
+                <div class="ibm-col-6-5">
+                  <form class="ibm-column-form">
+                    <p>
+                      <% if (typeof post != 'undefined') { %>
+                        <input type="text" name="post-title" id="post-title" class="full-width" value="<%= post.title %>" placeholder="Enter a post title" />
+                      <% } else { %>
+                        <input type="text" name="post-title" id="post-title" class="full-width" placeholder="Enter a post title" />
+                      <% } %>
+                    </p>
+                    <p>
+                      <span>
+                        <select id="tag-input" name="tags-select" data-placeholder="Type a tag..." data-tags="true" data-width="100%" multiple="multiple">
+                          <option data-select2-tag="true" value="this">this</option>
+                          <option data-select2-tag="true" value="is a">is a</option>
+                          <option data-select2-tag="true" value="test">test</option>
+                        </select>
+                      </span>
+                    </p>
+                    <p>
+                      <textarea name="editor" id="editor" class="full-width" rows="30"></textarea>
+                      <script>
+                        CKEDITOR.replace('editor');
+                      </script>
+                    </p>
+                  </form>
+                </div>
+                <div class="ibm-col-6-1">
+                  <h2 class="ibm-h2">Featured Image</h2>
+                  <% if (typeof post != 'undefined') { %>
+                    <img id="featured-img" class="ibm-resize" src="<%= post.featuredImagePath %>">
+                  <% } else { %>
+                    <img id="featured-img" class="ibm-resize" src="images/wireframe/square-image.png">
+                  <% } %>
+                  <form id="upload-form" class="ibm-column-form" method="post" enctype="multipart/form-data">
+                    <p>
+                      <span>
+                        <input id="browse-photos" type="file" data-widget="fileinput" />
+                      </span>
+                    </p>
+                    <p>
+                      <button id="upload-btn" class="ibm-btn-pri full-width-btn">Upload Photo</button>
+                    </p>
+                  </form>
+                  <div class="ibm-rule ibm-gray-30"><hr></div>
+                  <form id="publish-form" class="ibm-row-form" method="post" action="">
+                    <p class="ibm-form-elem-grp">
+                      <label>Category</label>
+                      <span>
+                        <select id="categories" placeholder="Select one">
+                          <% for (var category in categoryArray) { %>
+                            <% if (typeof post != 'undefined') { %>
+                              <option value="<%= categoryArray[category] %>" <% if (categoryArray[category] === post.category) { %>selected="selected"<% } %>><%= categoryArray[category] %></option>
+                            <% } else { %>
+                              <option value="<%= categoryArray[category] %>" <% if (categoryArray[category] === 'Uncategorized') { %>selected="selected"<% } %>><%= categoryArray[category] %></option>
+                            <% } %>
+                          <% } %>
+                        </select>
+                      </span>
+                    </p>
+                    <% if (typeof post != 'undefined') { %>
+                      <p>
+                        <a href="/blog/post/<%= post.id %>" id="view-btn" class="ibm-btn-pri full-width-btn">View Post</a>
+                      </p>
+                      <p>
+                        <button id="delete-btn" class="ibm-btn-pri ibm-btn-red-50 full-width-btn">Delete Post</button>
+                      </p>
+                    <% } %>
+                    <p>
+                      <button id="publish-btn" class="ibm-btn-pri ibm-btn-purple-50 full-width-btn">
+                        <% if (typeof post != 'undefined') { %>
+                          Update
+                        <% } else { %>
+                          Publish
+                        <% } %>
+                      </button>
+                    </p>
+                  </form>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <% include common/footer %>
+
+  </div>
+
+  <div class="ibm-common-overlay ibm-overlay-alt-three" data-widget="overlay" id="delete-overlay">
+    <h1 class="ibm-h1">Are you sure?</h1>
+    <p>Are you absolutely sure that you want to delete this post? <strong>Once you delete this post, it cannot be undone!</strong></p>
+    <p class="ibm-btn-row">
+      <button id="confirm-delete" class="ibm-btn-pri ibm-btn-red-50">Delete</button>
+      <button id="cancel-delete" class="ibm-btn-pri">Cancel</button>
+    </p>
+  </div>
+
+  <script src="/libs/jquery.min.js"></script>
+  <script src="/js/create-post.js"></script>
+
+  <% if (typeof post != 'undefined') { %>
+    <script>
+      $(document).ready(function() {
+        var htmlBody = "<%- post.htmlBody %>";
+
+        $('#editor').val(htmlBody);
+
+        $('#delete-btn').click(function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          $("#confirm-delete").on('click', function() {
+            $.post("dashboard/blog/edit/delete_post", { id : <%= post.id %> }, function(data) {
+              window.location.replace("dashboard/blog");
+            });
+
+            return false;
+          });
+
+          $("#cancel-delete").on('click', function() {
+            IBMCore.common.widget.overlay.hide('delete-overlay');
+
+            return false;
+          });
+
+          IBMCore.common.widget.overlay.show('delete-overlay');
+        });
+      });
+    </script>
+  <% } %>
+
+  <script>
+    $('#publish-form').submit(function(e) {
+      e.preventDefault();
+      var submit = true;
+
+      var featuredImage = $('img#featured-img').attr('src');
+      var postTitle = $('#post-title').val();
+      var postBody = CKEDITOR.instances.editor.getData();
+      var postCat = $('#categories').val();
+      var tags = [];
+
+      // perform some validation
+      if (postTitle === ''){
+        $('#post-title').addClass('ibm-field-error');
+
+        $("#post-title").change(function() {
+          if ($('#post-title').val().length > 0) {
+            $('#post-title').removeClass('ibm-field-error');
+          } else {
+            $('#post-title').addClass('ibm-field-error');
+          }
+        });
+
+        submit = false;
+      }
+
+      if (postCat === ''){
+        $('#categories').addClass('ibm-field-error');
+        submit = false;
+      }
+
+      if (featuredImage === ''){
+        featuredImage = '/images/wireframe/image.png';
+      }
+
+      $("#tag-input option").each(function() {
+        tags.push($(this).text());
+      });
+
+      if (submit) {
+        // send get request to route to write to the db
+        <% if (typeof post != 'undefined') { %>
+          $.post("/dashboard/blog/edit/update/" + window.location.pathname.split('/').pop(), {
+            titleVal  : postTitle,
+            bodyVal   : postBody,
+            catVal    : postCat,
+            imgVal    : featuredImage,
+            tags      : tags
+          }, function(result) {
+            window.location.href = result.url;
+          });
+        <% } else { %>
+          $.post("/dashboard/blog/create-post/publish", {
+            titleVal  : postTitle,
+            bodyVal   : postBody,
+            catVal    : postCat,
+            imgVal    : featuredImage,
+            tags      : tags
+          }, function(result) {
+            window.location.href = result.url;
+          });
+        <% } %>
+      }
+
+    });
+  </script>
+
+</body>
+</html>

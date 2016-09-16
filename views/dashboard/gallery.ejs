@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />      
+  <link rel="shortcut icon" href="//www.ibm.com/favicon.ico" />
+
+  <% include ../common/meta %>
+
+  <meta name="description" content="Manage the photos that are displayed in the Future Blue Photo gallery" />
+  <meta name="keywords" content="<% include ../common/keywords %> Photo, Gallery, Photo Gallery, Pictures, Images, Manage, Modify" />
+
+  <title>Manage Photo Gallery</title>
+
+  <!-- Stylesheets -->
+  <link href="/css/styles.css" rel="stylesheet" />
+  <link href="//1.www.s81c.com/common/v18/css/www.css" rel="stylesheet" />
+  <link href="//1.www.s81c.com/common/v18/css/tables.css" rel="stylesheet" />
+  <link href="//1.www.s81c.com/common/v18/css/forms.css" rel="stylesheet" />
+
+  <!-- Scripts -->
+  <% include ../common/meta-json %>
+
+  <script src="//www.ibm.com/common/stats/ida_stats.js"></script>
+  <script src="//1.www.s81c.com/common/v18/js/www.js"></script>
+  <script src="//1.www.s81c.com/common/v18/js/tables.js"></script>
+  <script src="//1.www.s81c.com/common/v18/js/forms.js"></script>
+
+  <% include ../common/settings %>
+</head>
+<body id="ibm-com" class="ibm-type">
+  <div id="ibm-top" class="ibm-landing-page">
+    <% include ../common/nav %>
+
+    <!-- LEADSPACE_BEGIN -->
+    <!-- This is where you put the breadcrumbs/page title. -->
+    <header role="banner" aria-labelledby="ibm-pagetitle-h1">
+      <div id="ibm-leadspace-head"  class="ibm-alternate" style="padding: 1em">
+        <div id="ibm-leadspace-body" style="padding-bottom: 0px;">
+          <!-- Nav trail -->
+          <nav role="navigation" aria-label="Breadcrumb">
+            <ul id="ibm-navigation-trail">
+              <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                <a href="/" class="breadcrumb" itemprop="url"><span itemprop="title">Home</span></a>
+              </li>
+              <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                <span itemprop="title">Dashboard</span>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="ibm-columns">
+            <div class="ibm-col-6-5">
+              <h1 id="ibm-pagetitle-h1" class="ibm-h1 ibm-bold">Manage Photo Gallery</h1>
+            </div>
+            <div class="ibm-col-6-1">
+              <p class="ibm-button-link">
+                <a href="/dashboard/gallery/add-photos" class="ibm-btn-pri ibm-btn-white full-width-btn">Add Photos</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </header>
+    <!-- LEADSPACE_END -->
+
+    <main role="main" aria-labelledby="ibm-pagetitle-h1">
+      <div id="ibm-pcon">
+        <div id="ibm-content">
+          <div id="ibm-content-body">
+            <div id="ibm-content-main">
+
+              <!-- Content goes here -->
+              <div class="ibm-columns">
+                <!-- Column for dashboard items -->
+                <div class="ibm-col-5-1">
+                  <% include sidebar %>
+                </div>
+                <!-- Column for gallery -->
+                <div class="ibm-col-5-4">
+                  <div class="ibm-card">
+                    <div class="ibm-card__content">
+                      <table id="gallery-table" data-widget="datatable" class="ibm-data-table cell-border" cellspacing="0" cellpadding="0" border="0">
+                        <caption>This is some caption element for the table.</caption>
+                        <thead>
+                          <tr>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                     
+                        <tbody>
+                          
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Content ends here -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <% include ../common/footer %>
+
+  </div>
+
+  <div class="ibm-common-overlay full-width" data-widget="overlay" id="overlay">
+    <form id="edit-image-form" class="ibm-row-form" method="POST" action="dashboard/gallery/update_photo">
+      <div class="ibm-columns">
+        <div class="ibm-col-6-3">
+          <div class="overlay-image"></div>
+        </div>
+        <div class="ibm-col-6-3 ibm-left">
+          
+          <p>
+            <label for="image-title">Title:</label>
+            <span>
+              <input class="full-width" type="text" value="" id="image-title" name="title">
+            </span>
+          </p>
+          <p>
+            <label for="image-description">Description:</label>
+            <span>
+              <input class="full-width" type="text" value="" id="image-description" name="description">
+            </span>
+          </p>
+          <p class="ibm-btn-row">
+            <input type="submit" class="ibm-btn-pri save-btn" name="submit" value="Save">
+            <input type="button" class="ibm-btn-pri ibm-btn-red-50 delete-btn" name="delete" value="Delete">
+          </p>
+          <p class="ibm-textcolor-gray-50 photo-details"></p>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="ibm-common-overlay ibm-overlay-alt-three" data-widget="overlay" id="delete-overlay">
+    <h1 class="ibm-h1">Are you sure?</h1>
+    <p>
+      Once you delete this photo, you cannot undo the action. So make sure that this is actually what you want to do!
+    </p>
+    <form id="edit-image-form" class="ibm-row-form" method="POST" action="/dashboard/gallery/update_photo">
+      <p>
+        <input type="button" class="ibm-btn-pri ibm-btn-red-50 delete-btn-confirm" name="delete" value="I'm sure. Delete this photo">
+      </p>
+      <p class="ibm-textcolor-gray-50">
+        Note, that the photo will still exist on the server. However, the reference to the photo will no longer exist in the database
+      </p>
+    </form>
+  </div>
+
+  <script src="/libs/jquery.min.js"></script>
+  <script src="//cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      var table = $("#gallery-table").DataTable({
+        data: <%- JSON.stringify(data) %>,
+        order: [],
+        columns: [
+          { data: "id", visible: false },
+          { data: "path", visible: false },
+          { 
+            data: "thumbnail", 
+            sTitle: "Photo",
+            width: "20%",
+            render: function(data, type, row) {
+              return "<img src=\"" + data + "\" alt=\"" + row.title + "\" width=\"200\" height=\"auto\" />"
+            }
+          },
+          { 
+            data: "title", 
+            sTitle: "Title",
+            width: "25%",
+            className: "vertical-align"
+          },
+          { 
+            data: "description", 
+            sTitle: "Description",
+            width: "40%",
+            className: "vertical-align"
+          },
+          { 
+            data: "datePosted", 
+            sTitle: "Date Posted",
+            width: "15%",
+            className: "vertical-align"
+          },
+          { 
+            data: "firstName", 
+            sTitle: "Name",
+            visible: false,
+            render: function(data, type, row) {
+              return data + " " + row.lastName;
+            }
+          },
+        ],
+        pagingType: "full_numbers"
+      });
+
+      table.on('click', 'tr', function() {
+        var row = table.row(this).data();
+
+        // Insert the image, title, and description to the modal
+        $('.overlay-image').html('<img src="' + row.path + '" class="ibm-resize" width="100%" height="auto" />');
+        $('#image-title').attr("value", row.title);
+        $('#image-description').attr("value", row.description);
+        $('.photo-details').html("This photo was posted on " + row.datePosted + " by " + row.firstName + " "+ row.lastName);
+
+        $('.save-btn').on('click', function() {
+          $.post("dashboard/gallery/edit_photo", { 
+            id : row.id,
+            title : $('input[name="title"]').val(),
+            description : $('input[name="description"]').val(),
+          }, function(data) {
+            location.reload();
+          });
+
+          return false;
+        });
+
+        $('.delete-btn').on('click', function() {
+          // Show the modal
+          IBMCore.common.widget.overlay.hide('overlay');
+
+          // Show the modal
+          IBMCore.common.widget.overlay.show('delete-overlay');
+
+          return false;
+        });
+
+        $('.delete-btn-confirm').on('click', function() {
+          $.post("dashboard/gallery/delete_photo", { id : row.id }, function(data) {
+            location.reload();
+          });
+
+          return false;
+        });
+        
+        // Show the modal
+        IBMCore.common.widget.overlay.show('overlay');
+
+        return false;
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="//www.ibm.com/favicon.ico" />
+
+  <% include ../common/meta %>
+
+  <meta name="description" content="Information that will help incoming students with their daily commute to and from IBM in the GTA" /> 
+  <meta name="keywords" content="<% include ../common/keywords %> Traffic, Highway, Transportation, Transport, Carpool, Subway, Train, Taxi, Bus, Transit, Toronto, Markham, GTA, Tips, Tip, Resource, Resources," />
+
+  <title>Toronto Public Transit</title>
+
+  <!-- Stylesheets -->
+  <link href="/css/styles.css" rel="stylesheet" />
+  <link href="/css/resources.css" rel="stylesheet" />
+  <link href="//1.www.s81c.com/common/v18/css/www.css" rel="stylesheet" />
+
+  <!-- Scripts -->
+  <% include ../common/meta-json %>
+
+  <script src="//www.ibm.com/common/stats/ida_stats.js"></script>
+  <script src="//1.www.s81c.com/common/v18/js/www.js"></script>
+
+  <% include ../common/settings %>
+</head>
+<body id="ibm-com" class="ibm-type">
+  <div id="ibm-top" class="ibm-landing-page">
+    <% include ../common/nav %>
+
+    <!-- LEADSPACE_BEGIN -->
+    <!-- This is where you put the breadcrumbs/page title. -->
+    <header role="banner" aria-labelledby="ibm-pagetitle-h1">
+
+      <div id="ibm-leadspace-head" class="ibm-alternate ibm-alternate-background">
+        <div id="ibm-leadspace-body" style="padding-bottom: 0px;">
+          <!-- Nav trail -->
+
+          <nav role="navigation" aria-label="Breadcrumb">
+            <ul id="ibm-navigation-trail">
+              <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                <a href="<%= rootPath %>" class="breadcrumb-inverse" itemprop="url"><span itemprop="title">Home</span></a>
+              </li>
+              <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                <a href="/resources" class="breadcrumb-inverse" itemprop="url"><span itemprop="title">Resources</span></a>
+              </li>
+              <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                <a href="/resources#toronto" class="breadcrumb-inverse" itemprop="url"><span itemprop="title">Toronto</span></a>
+              </li>
+            </ul>
+          </nav>
+          <div class="ibm-columns">
+            <div class="ibm-col-6-5">
+              <h1 id="ibm-pagetitle-h1" class="ibm-h1 ibm-bold">Toronto Commuting/Transit Advice</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </header>
+    <!-- LEADSPACE_END -->
+
+    <main role="main" aria-labelledby="ibm-pagetitle-h1">
+      <div id="ibm-pcon">
+        <div id="ibm-content">
+          <div id="ibm-content-body">
+            <div id="ibm-content-main">
+
+              <!-- Content goes here -->
+              <div class="ibm-columns">
+                <div class="ibm-col-1-1">
+                  <p>All FutureBluers living in the Toronto area, or actually anyone at all living in the Toronto area knows how confusing the transit system(s) here can be at first. Don’t worry though, it doesn’t take too long to get a rough understanding of how they work.
+                  </p>
+                  <p>When I first moved to the GTA (Greater Toronto Area) for my internship at IBM I was definitely perplexed. Downtown Toronto had subways, streetcars and buses, and the North Toronto areas had just buses, but they looked different. I didn’t understand when to use which bus system, or how much tickets were. It was a mess. Hopefully the advice below will clear a little of the confusion I had my first week. As always, feel free to email <a href="mailto:futureblue@ca.ibm.com">futureblue</a> with any more questions you might have.
+                  </p>
+                </div>
+                <div class="ibm-col-1-1">
+                  <div class="ibm-rule ibm-alternate-1 ibm-blue-40">  </div>
+                  <h2 class="ibm-h2 ibm-bold">The Transit Systems:</h2>
+                  <div class="ibm-rule ibm-alternate-1 ibm-blue-40">  </div>
+                    <h3  class="ibm-h3 ibm-bold">1. Viva</h3>
+                    <div >
+                      <br>
+                      <img src="/images/viva-map.jpg">
+                    </div>
+                    <p>
+                    <ul>
+                      <li>Area of coverage: the York Region along Yonge and Highway 7 (North of Downtown Toronto)</li>
+                      <li>Integrated with York Region Transit (YRT) so you can pay one fare to use both systems</li>
+                      <li>Check routes and times online (here) or by phoning in with your stop number
+                      </li>
+                      <li>Bus stops have ticker tape listing next few buses coming and their arrival times. These are generally quite accurate.</li>
+                      <li>You can get tickets individually, in a group of 10 or a monthly pass. You buy tickets or passes before you get on the bus. Single tickets are sold at machines by all Viva bus stops, passes and group of tickets are sold at bus stations.</li>
+                      <li>You don’t show the driver your ticket when you get on the bus: it’s the honor system with Viva. If you have a ticket from a group of 10, you must ‘validate’ it at the bus stop before getting on the bus (get it stamped with the date at the blue machines by any Viva bus stop).</li>
+                      <li>Viva buses are named by colour instead of by number. There are pink, blue, purple, green, orange buses. Note: the Viva pink route is just a name, the bus isn’t actually pink in colour.</li>
+                      <li>Zones: you have to pay more if you’re traveling through 2+ zones (which rarely happens for interns) but nevertheless, you will enter a new zone North of Bloomington Road and enter another new Zone north of Ravenshoe Road.</li>
+                      <li>For more info, visit  <a href="http://www.yorkregiontransit.com/en/">here.</a></li>
+                    </ul>
+                    </p>
+                  <div class="ibm-rule ibm-alternate-1 ibm-blue-40">  </div>
+                    <h3  class="ibm-h3 ibm-bold">2. YRT (York Region Transit)</h3>
+                    <p>
+                    <ul>
+                      <li>Like Viva, YRT operates in the York region. YRT generally operates North of Steeles Ave, though a few routes branch further south. See the full map: <a href="http://www.yorkregiontransit.com/en/schedulesmaps/maps.asp"> here.</a></li>
+                      <li>Integrated with Viva Transit (see above) so you can pay one fare to use both systems</li>
+                      <li>Check bus times at the bus stop, or online: <a href="http://tripplanner.yrt.ca/hiwire?.a=iScheduleLookup&_mid_=488">here.</a></li>
+                      <li>YRT tickets are the same as Viva tickets, with the exception of YRT express tickets, which are a bit more expensive (see fare category chart above)</li>
+                      <li>With YRT you show your bus pass, or give your ticket, or pay cash fare when you get on the bus (Your do not have to validate tickets before getting on the bus, like you do when riding VIVA).</li>
+                      <li>An intern favorite at 8200 Warden, when it comes to YRT buses is the 300 Business Express, which travels on the 407 from IBM to Finch Station, where you can connect to the TTC Subway</li>
+                      <li>For more info, visit  <a href="http://www.yorkregiontransit.com/en/">here.</a></li>
+                    </ul>
+                    </p>
+                  <div class="ibm-rule ibm-alternate-1 ibm-blue-40">  </div>
+                    <h3  class="ibm-h3 ibm-bold">3. TTC (Toronto Transit Commission)</h3>
+                    <div >
+                      <br>
+                      <img src="/images/ttc_map.jpg">
+                    </div>
+                    <p>
+                      <br>
+                      <h4  class="ibm-h4 ibm-bold">General TTC:</h4>
+                      <ul>
+                        <li>TTC includes subway, streetcars and busses that cover the downtown, midtown and uptown Toronto area.</li>
+                        <li>To plan your route, visit the <a href="http://www.ttc.ca/index.jsp">TTC Trip Planner</a></li>
+                        <li>Riders pay their fare by tokens, which you can buy at subways stations and even some convenience stores.</li>
+                        <li>One fare costs $3 (good for one trip on the TTC). If you buy tokens, they cost $2.60/token. You can get them in groups of 3 ($7.80), 7 ($18.20), or more.</li>
+                        <li>Day, weekly and monthly passes are also available: check <a href="http://www.ttc.ca/Fares_and_passes/Passes/index.jsp">here</a> for details</li>
+                        <li>Traveling on the weekend with friends? Consider getting a day-pass (which you can share: $10 for 2 adults and 4 kids!)</li>
+                      </ul>
+                    </p>
+                  <div class="ibm-rule ibm-alternate-1 ibm-blue-40">  </div>
+                  <h4  class="ibm-h4 ibm-bold">TTC Subway:</h4>
+                  <p>
+                  <ul>
+                    <li>Generally the subway comes about every 5 minutes, in rush hour every 3 minutes</li>
+                    <li>The first subway of the day comes at about 6am and the last comes at about 1am. Sundays, are the exception and subways don’t start until about 9am. You can check here for each subway stop’s more specific details.</li>
+                    <li>TV screens on subway platforms display the time of next arriving train, delays, news etc.</li>
+
+                  </ul>
+                  </p>
+                  <div class="ibm-rule ibm-alternate-1 ibm-blue-40">  </div>
+                    <h4  class="ibm-h4 ibm-bold" >TTC Buses and Streetcars:</h4>
+                      <p>
+                      <ul>
+                        <li>Between 9pm and 5am, anyone traveling alone on TTC buses can request to exit the bus at a location between regular TTC stops. More details</li>
+                        <li>From the Future Blue Communication team’s experience, TTC buses and streetcars are less reliable timing-wise, compared to some other systems in the Greater Toronto Area (GTA). Especially traveling downtown and especially at peak hours, traffic can really effect buses and streetcars staying on time.</li>
+                        <li>Traffic can really effect buses and streetcars staying on time.Unlike the subway or Viva bus system, TTC Buses and streetcar stops don’t have screen displaying the next arrival time; you’ll just have to wait it out!</li>
+
+                      </ul>
+                      </p>
+                  <div class="ibm-rule ibm-alternate-1 ibm-blue-40">  </div>
+                    <h4  class="ibm-h4 ibm-bold">TTC Buses North of Steeles:</h4>
+                      <p>
+                      <ul>
+                        <li>If you see TTC buses on York Region (like on Warden), they’re essentially YRT buses. You pay a YRT fare when boarding, not a TTC fare.</li>
+                        <li>If you’re heading southbound on a TTC bus in York Region, you’ll have to pay an additional TTC fare if you cross Steeles Ave. You can save time by paying the extra fare when boarding the bus.</li>
+                        <li>If you’re heading northbound on a TTC bus, you pay a YRT fare when exiting the bus, regardless of whether you got on the bus while in Toronto or York Region. The rear doors will not open for northbound buses in York Region; you board and enter at the front. You can ask for a transfer if you want to board a YRT or Viva bus afterwards.</li>
+
+                      </ul>
+                      </p>
+                  <div class="ibm-rule ibm-alternate-1 ibm-blue-40">  </div>
+                    <h3  class="ibm-h3 ibm-bold">4. Go Transit</h3>
+                    <div >
+                      <br>
+                      <img src="/images/gotransitmap.jpg">
+                    </div>
+                    <div class="ibm-rule ibm-alternate-1 ibm-blue-40">  </div>
+                    <h4  class="ibm-h4 ibm-bold">General Transit Tips:</h4>
+                    <p>
+                    <ul>
+                      <li><strong>Check <a href="https://www.google.ca/maps">Google Maps</a> for directions.</strong> Google maps will let you choose a public transit option when looking for directions. It’s an easy way to see the fastest route from point A to point B by transit, amalgamating all the transit options below.</li>
+                      <li><strong>Bring something to do.</strong> You don’t have to concentrate on the road, so why not concentrate on learning something new? Whatever your weapon of choice: book, ipod, knitting needles, don’t forget to pack it. If you’re someone who likes to keep updated on the news, check out programs like Instapaper. It’s a free web program and an app that allows you to read saved articles later. Or grab a free newspaper like 24Hr or Metro, usually there are plenty around bus stations.</li>
+                      <li><strong>Learn your route.</strong> The best advice I’ve gotten is to ask colleagues who take transit to tell you their secrets. For instance, it’s slightly more expensive, but IBM has set up a specific express bus that picks you up and drops you off right between IBM and Finch station. It also runs in 8-hour gaps, so if you catch the 8:50am at Finch you get here just before 9:30am, and then you can take the 5:25pm back to Finch. It’s very neat and tidy. If you’re just looking to get around via TTC, myttc.ca can save more from getting lost than a GPS. True facts.</li>
+                      <li><strong>Prepare for slowdowns.</strong> Nothing is more frustrating than if you leave on time  in the morning and the powers that be keep your bus delayed, in traffic, on a detour, in a crash. Whatever it is, you may end up behind schedule. Take a deep breath. If you’re in transit a lot, get updates sent to your phone. Almost all the major transit systems have automatic updates and they can be very useful.</li>
+
+                    </ul>
+                    </p>
+                  <div class="ibm-rule ibm-alternate-1 ibm-blue-40">  </div>
+                    <h2 class="ibm-h2 ibm-bold" >Commuting with a car or bike:</h2>
+                    <div class="ibm-rule ibm-alternate-1 ibm-blue-40">  </div>
+                    <h3 class="ibm-h3 ibm-bold" >Rush Hour:</h3>
+                    <p >
+                      You need to define how much time you are willing to spend commuting to and from work. Morning rush hour in Toronto lasts from 6:30 A.M. to 10:00 A.M.; with the evening rush hour ranging 3:30 P.M. – 7:00 P.M. Do you want to be stuck behind the wheel this time, or do you want to let a bus driver do the driving while you read the morning paper?
+                    </p>
+                    <h3  class="ibm-h3 ibm-bold">Commuting Alternatives:</h3>
+                    <p>
+                      We also encourage students to look into <strong>commuting alternatives</strong> to save money and minimize environmental damage, such as biking or carpooling. For a “smarter” commute, sign up online <a href="http://smartcommute.ca/">here</a> and volunteer to be matched with other travelers embarking on similar commutes. Click <a href="http://www.smartcommute404-7.ca/">here</a> for Markham specific site.
+                    </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <% include ../common/footer %>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+applications:
+- services:
+  - Future Blue MySQL
+  disk_quota: 1024M
+  host: futureblue
+  name: FutureBlue
+  path: .
+  domain: mybluemix.net
+  instances: 1
+  memory: 256M
