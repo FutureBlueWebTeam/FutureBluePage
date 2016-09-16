@@ -480,7 +480,7 @@ router.post('/delete_user', Auth.isAdmin, function(req, res, next) {
 
 /* Manage Photo Gallery page
 -------------------------------------------------------------------------------- */
-router.get('/gallery', Auth.isAdmin, function(req, res, next) {
+router.get('/gallery', Auth.isBlogger, function(req, res, next) {
 	DB.getPhotos(function(err, photos) {
 		if (err) {
 			res.render('error', {
@@ -501,14 +501,14 @@ router.get('/gallery', Auth.isAdmin, function(req, res, next) {
 	});
 });
 
-router.get('/gallery/add-photos', Auth.isAdmin, function(req, res, next) {
+router.get('/gallery/add-photos', Auth.isBlogger, function(req, res, next) {
 	res.render('dashboard/add-photos', {
 		dashboard : "ibm-highlight",
 		user : req.user
 	});
 });
 
-router.post('/gallery/upload_photos', Auth.isAdmin, function(req, res, next) {
+router.post('/gallery/upload_photos', Auth.isBlogger, function(req, res, next) {
 	var form = new formidable.IncomingForm();
     form.uploadDir = "./public/image_uploads/gallery";
     form.keepExtensions = true;
@@ -573,7 +573,7 @@ router.post('/gallery/upload_photos', Auth.isAdmin, function(req, res, next) {
     });
 });
 
-router.post('/gallery/edit_photo', Auth.isAdmin, function(req, res, next) {
+router.post('/gallery/edit_photo', Auth.isBlogger, function(req, res, next) {
 	var photo = {
 		id : req.body.id,
 		title : req.body.title,
@@ -596,7 +596,7 @@ router.post('/gallery/edit_photo', Auth.isAdmin, function(req, res, next) {
 	});
 });
 
-router.post('/gallery/delete_photo', Auth.isAdmin, function(req, res, next) {
+router.post('/gallery/delete_photo', Auth.isBlogger, function(req, res, next) {
 	DB.deletePhoto(req.body.id, function(err, result) {
 		if (err) {
 			res.render('error', {
