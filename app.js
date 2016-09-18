@@ -69,7 +69,7 @@ app.use('/contact', contact);
 app.use('/gallery', gallery);
 app.use('/template', template);
 app.use('/user', user);
-app.use('/web', require('../darkblue/app').app); //Launch web team site on /web route!
+//app.use('/web', require('../darkblue/app').app); //Launch web team site on /web route!
 blog.use('/post', post);
 resources.use('/toronto/', toronto);
 
