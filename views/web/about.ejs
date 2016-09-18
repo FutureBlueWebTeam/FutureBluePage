@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<% include common/header %>
+	</head>
+	<body>
+		<% include common/nav %>
+
+        <!-- Page Content -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 page-header text-center">
+                    <h1>About</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                	<h2>What is Future Blue?</h2>
+                	<p>
+                		Future Blue is the intern networking and social community that is operated by IBM's Campus Recruitment team. It operates four distinct teams that focus on different aspects of intern life at IBM: Social Events, Career &amp; Development, Communications, and Web.
+                	</p>
+                	<h2>What is the Web Team?</h2>
+                	<p>
+                		The Future Blue Web Team is the intern community at IBM. Our main goal is to learn new &amp; cool technologies by using them.
+                	</p>
+                	<p>
+						We want to help improve the IBM community by building all sorts of apps that IBMers could benefit from. Currently, our team uses Bluemix, Node.js, Ruby on Rails, and more. We believe that IBM at heart is a tech company, and we take pride in creating innovative applications by using the latest practices and technology.
+                	</p>
+                </div>
+            </div>
+            <div class="row">
+				<div class="col-lg-12 page-header text-center">
+                    <h1>Projects</h1>
+                </div>
+            </div>
+            <div class="row projects text-center">
+            	<div class="col-md-4">
+					<a href="/carpool">
+						<i class="fa fa-car white large" aria-hidden="true"></i>
+						<h3>IBM Carpool Buddy</h3>
+					</a>
+					<p class="margin-top">
+						The <a href="/carpool" class="highlight">Carpool Buddy</a> is a <a href="http://rubyonrails.org/" class="highlight">Ruby on Rails</a> application that matches IBMers to suitable carpools with fellow IBMers.
+					</p>
+					<p>
+						<small>Members: Peter, David, Rijul, Neeraja</small>
+					</p>
+    			</div>
+    			<div class="col-md-4">
+					<a href="/">
+						<i class="fa fa-flag white large" aria-hidden="true"></i>
+						<h3>Future Blue Internal Web Page</h3>
+					</a>
+					<p class="margin-top">
+						Future Blue's <a href="/" class="highlight">Internal Web Page</a> is the Web Team's official home, available within the IBM intranet at <a href="http://futureblue.torolab.ibm.com" class="highlight">futureblue.torolab.ibm.com</a>. It showcases what the web team's all about, and features a suggestion box for any IBMer to suggest project ideas. It's built using <a href="https://nodejs.org/" class="highlight">Node.js</a> and the <a href="https://expressjs.com/" class="highlight">Express.js</a> framework.
+					</p>
+					<p>
+						<small>Members: David, Gabriel, Travis, Jack, Julian</small>
+					</p>
+    			</div>
+    			<div class="col-md-4">
+    			<div data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Coming Back Soon!">
+					<a>
+						<i class="fa fa-newspaper-o white large" aria-hidden="true"></i>
+						<h3>Intern Board</h3>
+					</div>
+					</a>
+					<p class="margin-top">
+						The <a href="#" class="highlight">Intern Board</a> is a Reddit or HackerNews like website where interns can start a discussion or catch up on the latest news or articles that other interns are interested in. It's a <a href="https://www.meteor.com/" class="highlight">Meteor</a> application using the <a href="http://www.telescopeapp.org/" class="highlight">Telescope</a> framework.
+					</p>
+    			</div>
+    		</div>
+    		<div class="row projects text-center margin-top">
+    			<div class="col-md-4">
+    				<div data-toggle="popover" data-placement="top" data-trigger="hover">
+						<a href="https://fb-suggestions-app.mybluemix.net"><i class="fa fa-child white large" aria-hidden="true"></i><h3>Entertainment Finder</h3></a>
+					</div>
+					<p class="margin-top">
+						The <a href="https://fb-suggestions-app.mybluemix.net" class="highlight">Entertainment Finder</a> is an interactive map application that lets you discover recreational activities near you. 
+					</p>
+					<p>
+						<small>Members: Adam, Thomas, Brad, Uchi, Mahmoud</small>
+					</p>
+    			</div>
+    			<div class="col-md-4">
+    				<div data-toggle="popover" data-placement="top" data-trigger="hover">
+						<a href="http://bluewaves.mybluemix.net/"><i class="fa fa-picture-o white large" aria-hidden="true"></i><h3>BlueWaves</h3></a>
+					</div>
+					<p class="margin-top">
+						<a href="http://bluewaves.mybluemix.net/" class="highlight">BlueWaves</a> is an immersive relaxation tool using web graphics libraries.
+					</p>
+					<p>
+						<small>Members: Robert, Peter</small>
+					</p>
+    			</div>
+                <div class="col-md-4">
+    				<div data-toggle="popover" data-placement="top" data-trigger="hover">
+						<a href="http://askfubu.mybluemix.net/"><i class="fa fa-comments-o white large" aria-hidden="true"></i><h3>askFUBU</h3></a>
+					</div>
+					<p class="margin-top">
+						<a href="http://askfubu.mybluemix.net/" class="highlight">askFUBU</a> is an Watson-powered chatbot that can answer many questions for new IBM interns.
+					</p>
+					<p>
+						<small>Members: Rijul, Neeraja</small>
+					</p>
+    			</div>
+            </div>
+        </div> <!-- /.container -->
+
+        <% include common/footer %>
+		<script>
+		$(document).ready(function(){
+		    $('[data-toggle="popover"]').popover(); 
+		});
+		</script>
+	</body>
+</html>
