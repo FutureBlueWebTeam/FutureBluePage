@@ -69,6 +69,7 @@ app.use('/contact', contact);
 app.use('/gallery', gallery);
 app.use('/template', template);
 app.use('/user', user);
+app.use('/web', require('../darkblue').app); //Launch web team site on /web route!
 blog.use('/post', post);
 resources.use('/toronto/', toronto);
 
@@ -116,6 +117,9 @@ app.use(function (req, res, next) {
 
 /* Start the server
 ------------------------------------------------------ */
-app.listen(appEnv.port, '0.0.0.0', function () {
+/*app.listen(appEnv.port, '0.0.0.0', function () {
     console.log("server starting on " + appEnv.url);
+});*/
+app.listen(80, '0.0.0.0', function () {
+    console.log("Server started! Have a nice day!");
 });
