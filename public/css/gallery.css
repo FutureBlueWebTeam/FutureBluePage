@@ -17,3 +17,7 @@
 .ibm-alternate-background {
 	background-color: #E71D32 !important;
 }
+
+#overlay-alt {
+    max-height: none !important;
+}
