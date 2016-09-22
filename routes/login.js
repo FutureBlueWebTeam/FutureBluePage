@@ -17,7 +17,6 @@ router.get('/', Auth.isLoggedOut, function(req, res, next) {
 
 /* Handles logging into the site */
 router.post('/', Auth.isLoggedOut, function(req, res, next){
-    console.log(req.session.redirectTo);
     passport.authenticate('local-login', {
 	successRedirect: req.session.redirectTo || "/",
 	failureRedirect: '/login',

@@ -151,7 +151,7 @@ var DB = {
 	},
 
 	getUser : function(id, next) {
-		knex.select('firstName', 'lastName', 'email', 'signature', 'profilePicturePath', 'website', 'linkedin')
+		knex.select('firstName', 'lastName', 'email', 'signature', 'profilePicturePath', 'website', 'linkedin', 'id')
 			.from('users')
 			.where({ id : id })
 			.then(function(result) {
