@@ -33,7 +33,7 @@ module.exports = function(passport) {
                     email : Utils.escapeHtml(email),
                     internshipStart : new Date(Utils.escapeHtml(req.body.internshipStart)).toISOString(),
                     internshipEnd : new Date(Utils.escapeHtml(req.body.internshipEnd)).toISOString(),
-                    password : bcrypt.hashSync(Utils.escapeHtml(password)),
+                    password : bcrypt.hashSync(password),
                     accountType : 'Member', //Remove dis
                     dateJoined : new Date().toISOString()
                 }
