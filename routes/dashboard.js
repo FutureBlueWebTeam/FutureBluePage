@@ -17,7 +17,7 @@ router.get('/', Auth.isLoggedIn, function(req, res, next) {
 /* Profile page
 -------------------------------------------------------------------------------- */
 router.get('/profile', Auth.isLoggedIn, function(req, res, next) {
-	res.render('dashboard/profile', {
+    res.render('dashboard/profile', {
 		dashboard : "ibm-highlight",
 		user : req.user,
 		section : 'profile'
@@ -40,7 +40,7 @@ router.post('/profile/upload_profile_picture', Auth.isLoggedIn, function(req, re
           return;
         }
 
-        var imagePath = files.file.path.replace(/\\/g, "/");
+        var imagePath = Utils.escapeHtml(files.file.path.replace(/\\/g, "/"));
 
         gm(imagePath).resize(600, null, "^>").gravity('center').write(imagePath, function(err) {
 			if (err) { 
@@ -61,24 +61,24 @@ router.post('/profile/upload_profile_picture', Auth.isLoggedIn, function(req, re
 });
 
 router.post('/profile/edit_profile', Auth.isLoggedIn, function(req, res, next) {
-	knex.select().table('users').where('email', req.body.email).then(function(rows) {
+	knex.select().table('users').where('email', Utils.escapeHtml(req.body.email)).then(function(rows) {
 		if (rows.length && rows[0].id != req.body.id) {
 			console.log("email taken");
 			res.send({ message : "email taken" });
 		} else {
 			var user = {
 				id : req.body.id,
-				firstName : req.body.firstName,
-				lastName : req.body.lastName,
-				profilePicturePath : req.body.profilePicturePath,
-				email : req.body.email,
-				website : req.body.website,
-				linkedin : req.body.linkedin,
-				signature : req.body.signature
+				firstName : Utils.escapeHtml(req.body.firstName),
+				lastName : Utils.escapeHtml(req.body.lastName),
+				profilePicturePath : Utils.escapeHtml(req.body.profilePicturePath),
+				email : Utils.escapeHtml(req.body.email),
+				website : Utils.escapeHtml(req.body.website),
+				linkedin : Utils.escapeHtml(req.body.linkedin),
+				signature : Utils.escapeHtml(req.body.signature)
 			};
 
 			if (req.body.password) {
-				user.password = bcrypt.hashSync(req.body.password);
+				user.password = bcrypt.hashSync(Utils.escapeHtml(req.body.password));
 			}
 
 			DB.saveUser(user, function(err, result) {
@@ -411,7 +411,6 @@ router.get('/users', Auth.isAdmin, function(req, res, next) {
 
 			return;
 		}
-
 		res.render('dashboard/users', {
 			dashboard : "ibm-highlight",
 			user : req.user,

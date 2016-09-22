@@ -1,6 +1,7 @@
 var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require('bcrypt-nodejs');
 var knex = require('./knex.js');
+var Utils = require('./Utils.js');
 
 module.exports = function(passport) {
     passport.serializeUser(function(user, done) {
@@ -27,13 +28,13 @@ module.exports = function(passport) {
                 return done(null, false, req.flash('message', 'That email is already taken.'));
             } else {
                 var newUser = {
-                    firstName : req.body.firstName,
-                    lastName : req.body.lastName,
-                    email : email,
-                    internshipStart : new Date(req.body.internshipStart).toISOString(),
-                    internshipEnd : new Date(req.body.internshipEnd).toISOString(),
-                    password : bcrypt.hashSync(password),
-                    accountType : email === "fubuadmin@ca.ibm.com" ? "Admin" : 'Member', //Remove dis
+                    firstName : Utils.escapeHtml(req.body.firstName),
+                    lastName : Utils.escapeHtml(req.body.lastName),
+                    email : Utils.escapeHtml(email),
+                    internshipStart : new Date(Utils.escapeHtml(req.body.internshipStart)).toISOString(),
+                    internshipEnd : new Date(Utils.escapeHtml(req.body.internshipEnd)).toISOString(),
+                    password : bcrypt.hashSync(Utils.escapeHtml(password)),
+                    accountType : 'Member', //Remove dis
                     dateJoined : new Date().toISOString()
                 }
 
@@ -55,12 +56,12 @@ module.exports = function(passport) {
         passReqToCallback : true
     },
     function(req, email, password, done) {
-        knex.select().table('users').where('email', email).then(function(rows) {
+        knex.select().table('users').where('email', Utils.escapeHtml(email)).then(function(rows) {
             if (!rows.length) {
                 return done(null, false, req.flash('message', 'No user with that email exists.'));
             }
 
-            if (!bcrypt.compareSync(password, rows[0].password)) {
+            if (!bcrypt.compareSync(Utils.escapeHtml(password), rows[0].password)) {
                 return done(null, false, req.flash('message', 'Oops! You entered the wrong password.'));
             }
 
