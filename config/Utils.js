@@ -36,7 +36,14 @@ var Utils = {
 	},
     
     escapeHtml : function(unsafe) {
-    return unsafe
+    var reverseCoded = unsafe
+         .replace(/&amp;/g, "&")
+         .replace(/&lt;/g, "<")
+         .replace(/&gt;/g, ">")
+         .replace(/&quot;/g, "\"")
+         .replace(/&#039;/g, "'");
+        
+    return reverseCoded
          .replace(/&/g, "&amp;")
          .replace(/</g, "&lt;")
          .replace(/>/g, "&gt;")
