@@ -17,8 +17,7 @@ router.get('/', Auth.isLoggedIn, function(req, res, next) {
 /* Profile page
 -------------------------------------------------------------------------------- */
 router.get('/profile', Auth.isLoggedIn, function(req, res, next) {
-    req.user.name = Utils.escapeHtml(req.user.firstName);
-	res.render('dashboard/profile', {
+    res.render('dashboard/profile', {
 		dashboard : "ibm-highlight",
 		user : req.user,
 		section : 'profile'
@@ -412,7 +411,6 @@ router.get('/users', Auth.isAdmin, function(req, res, next) {
 
 			return;
 		}
-
 		res.render('dashboard/users', {
 			dashboard : "ibm-highlight",
 			user : req.user,
