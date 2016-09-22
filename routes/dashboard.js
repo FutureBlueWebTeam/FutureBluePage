@@ -62,12 +62,12 @@ router.post('/profile/upload_profile_picture', Auth.isLoggedIn, function(req, re
 
 router.post('/profile/edit_profile', Auth.isLoggedIn, function(req, res, next) {
 	knex.select().table('users').where('email', Utils.escapeHtml(req.body.email)).then(function(rows) {
-		if (rows.length && rows[0].id != Utils.escapeHtml(req.body.id)) {
+		if (rows.length && rows[0].id != parseInt(req.body.id)) {
 			console.log("email taken");
 			res.send({ message : "email taken" });
 		} else {
 			var user = {
-				id : Utils.escapeHtml(req.body.id),
+				id : parseInt(req.body.id),
 				firstName : Utils.escapeHtml(req.body.firstName),
 				lastName : Utils.escapeHtml(req.body.lastName),
 				profilePicturePath : Utils.escapeHtml(req.body.profilePicturePath),
@@ -232,7 +232,7 @@ router.post('/blog/create-post/publish', Auth.isBlogger, function(req, res, next
     title : Utils.escapeHtml(req.body.titleVal),
     htmlBody : req.body.bodyVal, //Purposefully not escaped
     category : Utils.escapeHtml(req.body.catVal),
-    user : Utils.escapeHtml(req.user.id),
+    user : parseInt(req.user.id),
     tags : req.body.tags instanceof Array ? JSON.stringify(req.body.tags.map(
         function(t){return Utils.escapeHtml(t)}
     )) : "[]",
@@ -385,7 +385,7 @@ router.post('/blog/edit/update/:id', Auth.isBlogger, function(req, res, next) {
 });
 
 router.post('/blog/edit/delete_post', Auth.isBlogger, function(req, res, next) {
-	DB.deletePost(Utils.escapeHtml(req.body.id), function(err, result) {
+	DB.deletePost(parseInt(req.body.id), function(err, result) {
 		if (err) {
 			res.render('error', {
 				user : req.user,
@@ -426,12 +426,12 @@ router.get('/users', Auth.isAdmin, function(req, res, next) {
 
 router.post('/edit_user', Auth.isAdmin, function(req, res, next) {
 	knex.select().table('users').where('email', Utils.escapeHtml(req.body.email)).then(function(rows) {
-		if (rows.length && rows[0].id != Utils.escapeHtml(req.body.id)) {
+		if (rows.length && rows[0].id != parseInt(req.body.id)) {
 			console.log("email taken");
 			res.send({ message : "email taken" });
 		} else {
 			var user = {
-				id : Utils.escapeHtml(req.body.id),
+				id : parseInt(req.body.id),
 				firstName : Utils.escapeHtml(req.body.firstName),
 				lastName : Utils.escapeHtml(req.body.lastName),
 				email : Utils.escapeHtml(req.body.email),
@@ -464,7 +464,7 @@ router.post('/edit_user', Auth.isAdmin, function(req, res, next) {
 });
 
 router.post('/delete_user', Auth.isAdmin, function(req, res, next) {
-	DB.deleteUser(Utils.escapeHtml(req.body.id), function(err, result) {
+	DB.deleteUser(parseInt(req.body.id), function(err, result) {
 		if (err) {
 			res.render('error', {
 				user : req.user,
@@ -577,7 +577,7 @@ router.post('/gallery/upload_photos', Auth.isBlogger, function(req, res, next) {
 
 router.post('/gallery/edit_photo', Auth.isBlogger, function(req, res, next) {
 	var photo = {
-		id : Utils.escapeHtml(req.body.id),
+		id : parseInt(req.body.id),
 		title : Utils.escapeHtml(req.body.title),
 		description : Utils.escapeHtml(req.body.description)
 	};
@@ -599,7 +599,7 @@ router.post('/gallery/edit_photo', Auth.isBlogger, function(req, res, next) {
 });
 
 router.post('/gallery/delete_photo', Auth.isBlogger, function(req, res, next) {
-	DB.deletePhoto(Utils.escapeHtml(req.body.id), function(err, result) {
+	DB.deletePhoto(parseInt(req.body.id), function(err, result) {
 		if (err) {
 			res.render('error', {
 				user : req.user,
