@@ -35,7 +35,7 @@ var Utils = {
 		return thumbnail;
 	},
     
-    escapeHtml = function(unsafe) {
+    escapeHtml : function(unsafe) {
     return unsafe
          .replace(/&/g, "&amp;")
          .replace(/</g, "&lt;")
