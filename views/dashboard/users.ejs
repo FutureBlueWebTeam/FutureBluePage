@@ -4,12 +4,12 @@
   <meta charset="utf-8"/>
 
 
-  <meta name="viewport" content="width=device-width, initial-scale=1" />      
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="shortcut icon" href="//www.ibm.com/favicon.ico" />
 
   <% include ../common/meta %>
 
-  <meta name="description" content="Manage the users that are registered with Future Blue" /> 
+  <meta name="description" content="Manage the users that are registered with Future Blue" />
   <meta name="keywords" content="<% include ../common/keywords %> Manage, Modify, Users, Profile, User, Profiles" />
 
   <title>Manage Users</title>
@@ -74,7 +74,7 @@
                 <div class="ibm-col-5-1">
                   <% include sidebar %>
                 </div>
-                
+
                 <!-- Column for profile card -->
                 <div class="ibm-col-5-4">
                   <div class="ibm-card">
@@ -130,43 +130,43 @@
               <input class="full-width" type="text" name="firstName" placeholder="First Name">
             </span>
           </p>
-          <p> 
+          <p>
             <label for="lastName">Last Name</label>
             <span>
               <input class="full-width" type="text" name="lastName" placeholder="Last Name">
             </span>
           </p>
-          <p>  
+          <p>
             <label for="internshipStart">Internship Start Date</label>
             <span>
               <input class="full-width" type="text" name="internshipStart" placeholder="Start Date">
             </span>
           </p>
-          <p> 
+          <p>
             <label for="lastName">Internship End Date</label>
             <span>
               <input class="full-width" type="text" name="internshipEnd" placeholder="End Date">
             </span>
           </p>
-          <p> 
+          <p>
             <label for="email">Email</label>
             <span>
               <input class="full-width" type="text" name="email" placeholder="Email Address">
             </span>
           </p>
-          <p>  
+          <p>
             <label for="password">Password</label>
             <span>
               <input class="full-width" type="password" name="password" placeholder="Password">
             </span>
           </p>
-          <p>  
+          <p>
             <label for="password">Personal Website</label>
             <span>
               <input class="full-width" type="text" name="website" placeholder="Personal Website">
             </span>
           </p>
-          <p>  
+          <p>
             <label for="password">Linkedin Profile</label>
             <span>
               <input class="full-width" type="text" name="linkedin" placeholder="linkedin">
@@ -197,7 +197,7 @@
             </p>
             <p>
               <span>
-                <input id="upload-btn" class="ibm-btn-pri ibm-btn-blue-50" value="Upload Profile Picture">
+                <input id="upload-btn" class="ibm-btn-pri ibm-btn-blue-50" value="Upload Profile Picture" readonly>
               </span>
             </p>
           </form>
@@ -234,8 +234,8 @@
         order: [],
         columns: [
           { data: "id", visible: false },
-          { 
-            data: "firstName", 
+          {
+            data: "firstName",
             sTitle: "Name",
             render: function(data, type, row) {
               return data + " " + row.lastName;
@@ -272,7 +272,7 @@
         $(".save-btn").click(function() {
           var password = $('input[name="password"]').val();
 
-           $.post("/dashboard/edit_user", { 
+           $.post("/dashboard/edit_user", {
               id : row.id,
               firstName : $('input[name="firstName"]').val(),
               lastName : $('input[name="lastName"]').val(),
@@ -289,7 +289,7 @@
                 location.reload();
               }
               else if (data.message === "") {
-                
+
               }
             });
         });

@@ -4,12 +4,12 @@
   <meta charset="utf-8"/>
 
 
-  <meta name="viewport" content="width=device-width, initial-scale=1" />      
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="shortcut icon" href="//www.ibm.com/favicon.ico" />
 
   <% include ../common/meta %>
 
-  <meta name="description" content="Modify your Future Blue profile" /> 
+  <meta name="description" content="Modify your Future Blue profile" />
   <meta name="keywords" content="<% include ../common/keywords %> Manage, Modify, Profile, User" />
 
   <title>Edit Profile</title>
@@ -74,13 +74,13 @@
                 <div class="ibm-col-5-1">
                   <% include sidebar %>
                 </div>
-                
+
                 <!-- Column for profile card -->
                 <div class="ibm-col-5-4">
                   <div class="ibm-card">
                     <div class="ibm-card__content">
                         <h3 class="ibm-h3">
-                          Update Profile 
+                          Update Profile
                           (<a href="/user/<% user.id %>">View your profile</a>)
                         </h3>
                         <p>You can update your profile using the form below</p>
@@ -143,7 +143,7 @@
                                     </span>
                                   </p>
                                   <p>
-                                    <input id="upload-btn" class="ibm-btn-pri ibm-btn-blue-50" value="Upload Profile Picture">
+                                    <input id="upload-btn" class="ibm-btn-pri ibm-btn-blue-50" value="Upload Profile Picture" readonly>
                                   </p>
                                 </form>
                             </div>
@@ -172,7 +172,7 @@
 
             </div>
             <!-- Content ends here -->
-            
+
           </div>
         </div>
       </div>
@@ -188,7 +188,7 @@
     $(document).ready(function() {
 
       var user = <%- JSON.stringify(user) %>;
-      
+
       $('input[name="firstName"]').val(user.firstName);
       $('input[name="lastName"]').val(user.lastName);
       $('input[name="email"]').val(user.email);
@@ -205,8 +205,8 @@
           $("#password").addClass("ibm-field-error");
           return;
         }
-        
-        $.post("/dashboard/profile/edit_profile", { 
+
+        $.post("/dashboard/profile/edit_profile", {
           id : user.id,
           firstName : $('input[name="firstName"]').val(),
           lastName : $('input[name="lastName"]').val(),
