@@ -33,13 +33,13 @@ module.exports = function(passport) {
                     email : Utils.escapeHtml(email),
                     internshipStart : new Date(Utils.escapeHtml(req.body.internshipStart)).toISOString(),
                     internshipEnd : new Date(Utils.escapeHtml(req.body.internshipEnd)).toISOString(),
-                    password : bcrypt.hashSync(Utils.escapeHtml(password)),
-                    accountType : 'Member', //Remove dis
+                    password : bcrypt.hashSync(password),
+                    accountType : 'Member', 
                     dateJoined : new Date().toISOString()
                 }
 
                 knex.insert(newUser).into('users').returning('id').then(function(id) {
-                    newUser.id = id[0];
+                    newUser.id = Utils.escapeHtml(id[0]);
 
                     return done(null, newUser);
                 });
@@ -61,7 +61,7 @@ module.exports = function(passport) {
                 return done(null, false, req.flash('message', 'No user with that email exists.'));
             }
 
-            if (!bcrypt.compareSync(Utils.escapeHtml(password), rows[0].password)) {
+            if (!bcrypt.compareSync(password, rows[0].password)) {
                 return done(null, false, req.flash('message', 'Oops! You entered the wrong password.'));
             }
 

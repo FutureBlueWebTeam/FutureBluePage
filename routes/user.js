@@ -5,7 +5,7 @@ var router = express.Router();
 
 /* GET about page. */
 router.get('/:id', function(req, res, next) {
-	DB.getUser(req.params.id, function(err, profile) {
+	DB.getUser(parseInt(req.params.id), function(err, profile) {
 		if (err) {
 			res.render('error', {
 				user : req.user,
@@ -14,7 +14,7 @@ router.get('/:id', function(req, res, next) {
 				icon : 'remove'
 			});
 		} else {
-			DB.getPostsByUser(req.params.id, function(err, posts) {
+			DB.getPostsByUser(parseInt(req.params.id), function(err, posts) {
 				if (err) {
 					res.render('error', {
 						user : req.user,
