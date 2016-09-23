@@ -13,7 +13,7 @@
 }
 
 .masthead.segment {
-	background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/2015-16.jpg') no-repeat center center !important;
+	background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/2016-17.jpg') no-repeat center center !important;
 	background-size: cover !important;
 	-webkit-background-size: cover !important;
 	-moz-background-size: cover !important;
@@ -24,7 +24,7 @@
 }
 
 #ibm-northstar-futureblue { 
-	background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/2015-16.jpg') no-repeat scroll 17% !important;
+	background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/2016-17.jpg') no-repeat scroll 17% !important;
 	background-size: cover !important;
 	-webkit-background-size: cover !important;
 	-moz-background-size: cover !important;
