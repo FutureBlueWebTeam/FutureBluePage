@@ -2,25 +2,25 @@
 <html lang="en-US">
 
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
 
 
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="shortcut icon" href="//www.ibm.com/favicon.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="//www.ibm.com/favicon.ico" />
 
     <% include ../common/meta %>
 
-    <meta name="description" content="Modify your Future Blue profile"/>
-    <meta name="keywords" content="<% include ../common/keywords %> Manage, Modify, Profile, User"/>
+    <meta name="description" content="Modify your Future Blue profile" />
+    <meta name="keywords" content="<% include ../common/keywords %> Manage, Modify, Profile, User" />
 
     <title>Edit Profile</title>
 
     <!-- Stylesheets -->
-    <link href="//1.www.s81c.com/common/v18/css/www.css" rel="stylesheet"/>
-    <link href="//1.www.s81c.com/common/v18/css/tables.css" rel="stylesheet"/>
-    <link href="//1.www.s81c.com/common/v18/css/forms.css" rel="stylesheet"/>
-    <link href="/css/styles.css" rel="stylesheet"/>
-    <link href="/css/profile.css" rel="stylesheet"/>
+    <link href="//1.www.s81c.com/common/v18/css/www.css" rel="stylesheet" />
+    <link href="//1.www.s81c.com/common/v18/css/tables.css" rel="stylesheet" />
+    <link href="//1.www.s81c.com/common/v18/css/forms.css" rel="stylesheet" />
+    <link href="/css/styles.css" rel="stylesheet" />
+    <link href="/css/profile.css" rel="stylesheet" />
 
     <!-- Scripts -->
     <% include ../common/meta-json %>
@@ -97,95 +97,75 @@
                                                     <p>
                                                         <label for="firstName">First Name</label>
                                                         <span>
-                                        <input type="text" size="60" value="<%= user.firstName %>" id="firstName"
-                                               name="firstName" placeholder="First Name">
+                                        <input type="text" size="60" value="<%= user.firstName %>" id="firstName" name="firstName" placeholder="First Name">
                                     </span>
                                                     </p>
                                                     <p>
                                                         <label for="lastName">Last Name</label>
                                                         <span>
-                                        <input type="text" size="60" value="<%= user.lastName %>" id="lastName"
-                                               name="lastName" placeholder="Last Name">
+                                        <input type="text" size="60" value="<%= user.lastName %>" id="lastName" name="lastName" placeholder="Last Name">
                                     </span>
                                                     </p>
                                                     <p>
                                                         <label for="email">Email</label>
                                                         <span>
-                                        <input type="text" size="60" value="<%= user.email %>" id="email" name="email"
-                                               placeholder="someone@ca.ibm.com">
+                                        <input type="text" size="60" value="<%= user.email %>" id="email" name="email" placeholder="someone@ca.ibm.com">
                                     </span>
-                                                        <span id="email-error"
-                                                              class="hidden ibm-item-note ibm-alert-link">This email is taken. Try again.</span>
+                                                        <span id="email-error" class="hidden ibm-item-note ibm-alert-link">This email is taken. Try again.</span>
                                                     </p>
                                                     <p>
                                                         <label for="password">Password</label>
                                                         <span>
-                                        <input type="password" size="60" placeholder="Password" id="password"
-                                               name="password" value="">
+                                        <input type="password" size="60" placeholder="Password" id="password" name="password" value="">
                                     </span>
-                                                        <span id="password-error"
-                                                              class="hidden ibm-item-note ibm-alert-link">Your password must be 6 or more characters</span>
+                                                        <span id="password-error" class="hidden ibm-item-note ibm-alert-link">Your password must be 6 or more characters</span>
                                                     </p>
                                                     <p>
                                                         <label for="website">Personal Website</label>
                                                         <span>
-                                        <input type="text" size="60" value="<%= user.website %>" id="website"
-                                               name="website" placeholder="http://">
+                                        <input type="text" size="60" value="<%= user.website %>" id="website" name="website" placeholder="http://">
                                     </span>
                                                     </p>
                                                     <p>
                                                         <label for="linkedin">Linkedin Profile</label>
                                                         <span>
-                                        <input type="text" size="60" value="<%= user.linkedin %>" id="linkedin"
-                                               name="linkedin" placeholder="http://">
+                                        <input type="text" size="60" value="<%= user.linkedin %>" id="linkedin" name="linkedin" placeholder="http://">
                                     </span>
                                                     </p>
                                                 </div>
                                                 <div class="ibm-col-4-1">
                                                     <p>
-                                                        <label for="profile-picture" style="text-align:left">Profile
-                                                            Picture</label>
-                                                        <img src="<%= user.profilePicturePath %>" id="profile-picture"
-                                                             class="ibm-resize" style="max-width:60%"/>
+                                                        <label for="profile-picture" style="text-align:left">Profile Picture</label>
+                                                        <img src="<%= user.profilePicturePath %>" id="profile-picture" class="ibm-resize" style="max-width:60%" />
                                                     </p>
-                                                    <form id="profile-pic-form" method="post"
-                                                          enctype="multipart/form-data">
+                                                    <form id="profile-pic-form" method="post" enctype="multipart/form-data">
                                                         <p>
-                                                            <span><input id="browse-photo" type="file" data-widget="fileinput"></span>
+                                                                    <span>
+                                      <input id="browse-photo" type="file" data-widget="fileinput">
+                                    </span>
                                                         </p>
-                                                        <% } %>
-                                                        <p><input id="save-profile" type="button" class="ibm-btn-pri ibm-btn-blue-50" name="save" value="Save"></p>
+                                                        <p>
+                                                            <input id="upload-btn" class="ibm-btn-pri ibm-btn-blue-50" value="Upload Profile Picture" type="submit">
+                                                        </p>
                                                     </form>
-                                                </div>
-                                                <div class="ibm-card__image">
-                                                    <div class="info-message ibm-information-link ibm-inline-link">
-                                                        <p>Looking to update your start/end dates for your internship? Contact <a href="mailto:tmullen@ca.ibm.com,bradleyp@ca.ibm.com">a web lead</a>.
-                                                        <p>
-                                                            <input id="upload-btn" class="ibm-btn-pri ibm-btn-blue-50"
-                                                                   value="Upload Profile Picture" type="submit">
-                                                        </p>
-                                        </form>
                                                 </div>
                                             </div>
                                             <% if (user && (user.accountType == 'Admin' || user.accountType == 'Blogger')) { %>
                                             <p>
                                                 <label for="signature">Signature</label>
                                                 <span>
-                                    <textarea rows="8" name="signature" id="signature"
-                                              placeholder="Please enter a signature that you would like to see at the end of your blog posts"><%= user.signature %></textarea>
+                                    <textarea rows="8" name="signature" id="signature" placeholder="Please enter a signature that you would like to see at the end of your blog posts"><%= user.signature %></textarea>
                                 </span>
                                             </p>
                                             <% } %>
                                             <p>
-                                                <input id="save-profile" type="button"
-                                                       class="ibm-btn-pri ibm-btn-blue-50" name="save" value="Save">
+                                                <input id="save-profile" type="button" class="ibm-btn-pri ibm-btn-blue-50" name="save" value="Save">
                                             </p>
                                         </form>
                                     </div>
                                     <div class="ibm-card__image">
                                         <div class="info-message ibm-information-link ibm-inline-link">
-                                            <p>Looking to update your start/end dates for your internship? Contact Tom
-                                                Fischer or Christina Isaicu
+                                            <p>Looking to update your start/end dates for your internship? Contact <a href="mailto:tmullen@ca.ibm.com,bradleyp@ca.ibm.com">a web lead</a>.
                                             <p>
                                         </div>
                                     </div>
