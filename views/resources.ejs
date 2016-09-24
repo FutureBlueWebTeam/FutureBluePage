@@ -73,7 +73,7 @@
                		<div class="ibm-col-4-1">
                			<div class="ibm-card__image"><img class="ibm-resize" src="images/bus2.png" width="300" height="170" alt="" /></div>
 		               	<div class="ibm-card__content">
-			                <h3 class="ibm-bold ibm-h4">Public Transit</h3><p>Planning on utilizing public transit? Here are some tips to help cut down your daily commute.</p>
+			                <h3 class="ibm-bold ibm-h4">Public Transit</h3><p class="resize-p">Planning on utilizing public transit? Here are some tips to help cut down your daily commute.</p>
 			            	<p class="ibm-padding-top-1 ibm-button-link"><a class="ibm-btn-sec ibm-btn-red-50" href="/resources/toronto/public-transit">Click for more info!</a></p>
 		               </div>
 		            </div>
@@ -82,7 +82,7 @@
 		            <div class="ibm-col-4-1">
 		            	<div class="ibm-card__image"><img class="ibm-resize" src="images/market2.png" width="300" height="170" alt="" /></div>
 		               	<div class="ibm-card__content">
-			                <h3 class="ibm-bold ibm-h4">Things to Do</h3><p>Looking for something fun to do after work and on weekends? Here is a list of events and things to do in the GTA.</p>
+			                <h3 class="ibm-bold ibm-h4">Things to Do</h3><p class="resize-p-master">Looking for something fun to do after work and on weekends? Here is a list of events and things to do in the GTA.</p>
 			            	<p class="ibm-padding-top-1 ibm-button-link"><a class="ibm-btn-sec ibm-btn-blue-50" href="/resources/toronto/things-to-do">Click for more info!</a></p>
 		               </div>
 		            </div>
@@ -91,7 +91,7 @@
 		            <div class="ibm-col-4-1">
 		            	<div class="ibm-card__image"><img class="ibm-resize" src="images/restaurant2.jpg" width="300" height="170" alt="" /></div>
 		               	<div class="ibm-card__content">
-			                <h3 class="ibm-bold ibm-h4">Restaurants</h3><p>Hungry? here are some good restaurants near the lab where you and your friends can go!</p>
+			                <h3 class="ibm-bold ibm-h4">Restaurants</h3><p class="resize-p">Hungry? here are some good restaurants near the lab where you and your friends can go!</p>
 			            	<p class="ibm-padding-top-1 ibm-button-link"><a class="ibm-btn-sec ibm-btn-green-50" href="/resources/toronto/restaurants" >Click for more info!</a></p>
 		               </div>
 		            </div>
@@ -100,11 +100,22 @@
 		            <div class="ibm-col-4-1">
 		            	<div class="ibm-card__image"><img class="ibm-resize" src="images/apartment2.png" width="300" height="170" alt="" /></div>
 		               	<div class="ibm-card__content">
-			                <h3 class="ibm-bold ibm-h4">Housing</h3><p>Looking to move closer to IBM? Read these tips for renting a house or apartment nearby.</p>
+			                <h3 class="ibm-bold ibm-h4">Housing</h3><p class="resize-p">Looking to move closer to IBM? Read these tips for renting a house or apartment nearby.</p>
 			            	  <p class="ibm-padding-top-1 ibm-button-link"><a class="ibm-btn-sec ibm-btn-purple-50" href="/resources/toronto/housing" >Click for more info!</a></p>
 		               </div>
 		            </div>
 		            <!--Housing end-->
+                    <script>
+                        //Fix buttons
+                        var master = document.querySelector(".resize-p-master");
+                        function fixButtons(){
+                            document.querySelectorAll(".resize-p").forEach(function(el){
+                                el.style.minHeight = window.getComputedStyle(master).getPropertyValue("height");
+                            });
+                        };
+                        fixButtons();
+                        window.addEventListener('resize', fixButtons);
+                    </script>
 		        </div>
                <!--end cards -->	
              </div>
