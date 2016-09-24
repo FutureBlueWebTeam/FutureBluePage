@@ -22,18 +22,6 @@ var Utils = {
 
 		return 'It looks like something didn\'t go as planned. Contact Tom Fischer or Christina Isaicu with the following error:<br><br><b>' + escErr + '</b>';
 	},
-
-	getThumbnailPath : function(path) {
-		var parts = path.split(".");
-		var thumbnail = path;
-
-		if (parts.length > 1) {
-			parts[parts.length - 2] += "_thumb";
-			thumbnail = parts.join(".");
-		}
-
-		return thumbnail;
-	},
     
     escapeHtml : function(unsafe) {
     var reverseCoded = unsafe

@@ -85,7 +85,7 @@
 
                 <% photos.forEach(function(photo, i) { %>
                   <div class="ibm-col-4-1">
-                    <div class="gallery-image" data-gallery="<%= JSON.stringify(photo) %>" style="background-image:url('<%= photo.thumbnail %>');">
+                    <div class="gallery-image" data-gallery="<%= JSON.stringify(photo) %>" style="background-image:url('<%= photo.path %>');">
                     </div>
                   </div>
                 <% }); %>

@@ -46,7 +46,7 @@ $(document).ready(function() {
 
 					$('<div/>', {
 						'class' : 'gallery-image',
-						style : "background-image:url('" + photo.thumbnail + "');",
+						style : "background-image:url('" + photo.path + "');",
 						'data-gallery' : photoString
 					}).appendTo(card);
 				}

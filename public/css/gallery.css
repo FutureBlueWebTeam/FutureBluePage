@@ -5,7 +5,8 @@
 .gallery-image {
 	margin: 10px auto;
 	background-size: cover;
-	background-position: center;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
 	height: 320px;
 	cursor: pointer;
 }
