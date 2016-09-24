@@ -93,7 +93,7 @@ a.full-width-btn {
 }
 
 .dashboard-item {
-	font-size: 2px;
+	font-size: 1em;
 	display: block !important;
 	margin: 10px 0 !important;
 }

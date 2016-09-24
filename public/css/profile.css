@@ -1,14 +1,3 @@
-.dashboard-item {
-	font-size: 2px;
-	display: block !important;
-	margin: 10px 0 !important;
-}
-
-.dashboard-item > p {
-	font-size: 17px !important;
-	padding: 5px 2em;
-}
-
 #image-title, #image-description {
 	width: 100%;
 }
