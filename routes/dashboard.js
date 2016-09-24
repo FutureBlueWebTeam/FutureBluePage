@@ -534,26 +534,9 @@ router.post('/gallery/upload_photos', Auth.isBlogger, function (req, res, next) 
     form.on('end', function () {
         for (var i = 0; i < photos.length; i++) {
             var photo = photos[i];
-            // var thumbnail = Utils.getThumbnailPath(photo);
 
             photo = process.cwd() + "/public" + photo;
             photo = photo.replace(/\\/g, "/");
-            /*thumbnail = process.cwd() + "/public" + thumbnail;
-            thumbnail = thumbnail.replace(/\\/g, "/");*/
-
-            /*gm(photo).resize(null, 320)
-                .gravity('center')
-                .write("/image_uploads/gallery/thumbnail.png", function (err) {
-
-                    if (err) {
-                        res.render('error', {
-                            user: req.user,
-                            title: 'Something went wrong...',
-                            message: Utils.getErrorMessage(err),
-                            icon: 'remove'
-                        });
-                    }
-                });*/
         }
     });
 
