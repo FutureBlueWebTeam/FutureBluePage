@@ -151,15 +151,20 @@
                                                     <form id="profile-pic-form" method="post"
                                                           enctype="multipart/form-data">
                                                         <p>
-                                                                    <span>
-                                      <input id="browse-photo" type="file" data-widget="fileinput">
-                                    </span>
+                                                            <span><input id="browse-photo" type="file" data-widget="fileinput"></span>
                                                         </p>
+                                                        <% } %>
+                                                        <p><input id="save-profile" type="button" class="ibm-btn-pri ibm-btn-blue-50" name="save" value="Save"></p>
+                                                    </form>
+                                                </div>
+                                                <div class="ibm-card__image">
+                                                    <div class="info-message ibm-information-link ibm-inline-link">
+                                                        <p>Looking to update your start/end dates for your internship? Contact <a href="mailto:tmullen@ca.ibm.com,bradleyp@ca.ibm.com">a web lead</a>.
                                                         <p>
                                                             <input id="upload-btn" class="ibm-btn-pri ibm-btn-blue-50"
                                                                    value="Upload Profile Picture" type="submit">
                                                         </p>
-                                                    </form>
+                                        </form>
                                                 </div>
                                             </div>
                                             <% if (user && (user.accountType == 'Admin' || user.accountType == 'Blogger')) { %>
