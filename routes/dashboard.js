@@ -40,10 +40,14 @@ router.post('/profile/upload_profile_picture', Auth.isLoggedIn, function(req, re
           return;
         }
 
+		if (!files || !files.file || !files.file.path) {
+			return;
+		}
+
         var imagePath = Utils.escapeHtml(files.file.path.replace(/\\/g, "/"));
 
         gm(imagePath).resize(600, null, "^>").gravity('center').write(imagePath, function(err) {
-			if (err) { 
+			if (err) {
 				res.render('error', {
 		            user : req.user,
 		            title : 'Something went wrong...',
@@ -167,7 +171,7 @@ router.post('/blog/create-post/upload_image', Auth.isBlogger, function(req, res,
 			var imagePath = files.upload.path.replace(/\\/g, "/");
 
 			gm(imagePath).resize(600, null, "^>").gravity('center').write(imagePath, function(err) {
-				if (err) { 
+				if (err) {
 					res.render('error', {
 						user : req.user,
 						title : 'Something went wrong...',
@@ -210,7 +214,7 @@ router.post('/blog/create-post/upload_featured_image', Auth.isBlogger, function(
 			var imagePath = files.uploadFile.path.replace(/\\/g, "/");
 
 			gm(imagePath).resize(600, null, "^>").gravity('center').write(imagePath, function(err) {
-				if (err) { 
+				if (err) {
 					res.render('error', {
 						user : req.user,
 						title : 'Something went wrong...',
@@ -302,7 +306,7 @@ router.post('/blog/edit/upload_image', Auth.isBlogger, function(req, res, next) 
             var imagePath = files.upload.path.replace(/\\/g, "/");
 
             gm(imagePath).resize(600, null, "^>").gravity('center').write(imagePath, function(err) {
-				if (err) { 
+				if (err) {
 					res.render('error', {
 						user : req.user,
 						title : 'Something went wrong...',
@@ -324,7 +328,7 @@ router.post('/blog/edit/upload_image', Auth.isBlogger, function(req, res, next) 
 		            res.send(html);
 				}
 			});
-            
+
         }
     });
 });
@@ -345,7 +349,7 @@ router.post('/blog/edit/upload_featured_image', Auth.isBlogger, function(req, re
             var imagePath = files.upload.path.replace(/\\/g, "/");
 
             gm(imagePath).resize(600, null, "^>").gravity('center').write(imagePath, function(err) {
-				if (err) { 
+				if (err) {
 					res.render('error', {
 						user : req.user,
 						title : 'Something went wrong...',
@@ -393,11 +397,11 @@ router.post('/blog/edit/delete_post', Auth.isBlogger, function(req, res, next) {
 				message : Utils.getErrorMessage(err),
 				icon : 'remove'
 			});
-			
+
 			return;
 		}else{
             res.redirect('/blog');
-        } 
+        }
 	});
 });
 
@@ -537,7 +541,7 @@ router.post('/gallery/upload_photos', Auth.isBlogger, function(req, res, next) {
 					 .gravity('center')
 					 .write(thumbnail, function(err) {
 
-				if (err) { 
+				if (err) {
 					res.render('error', {
 			            user : req.user,
 			            title : 'Something went wrong...',
@@ -590,7 +594,7 @@ router.post('/gallery/edit_photo', Auth.isBlogger, function(req, res, next) {
 				message : Utils.getErrorMessage(err),
 				icon : 'remove'
 			});
-			
+
 			return;
 		}
 
@@ -607,7 +611,7 @@ router.post('/gallery/delete_photo', Auth.isBlogger, function(req, res, next) {
 				message : Utils.getErrorMessage(err),
 				icon : 'remove'
 			});
-			
+
 			return;
 		}
 
