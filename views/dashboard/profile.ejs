@@ -10,228 +10,228 @@
 
     <% include ../common/meta %>
 
-        <meta name="description" content="Modify your Future Blue profile" />
-        <meta name="keywords" content="<% include ../common/keywords %> Manage, Modify, Profile, User" />
+    <meta name="description" content="Modify your Future Blue profile" />
+    <meta name="keywords" content="<% include ../common/keywords %> Manage, Modify, Profile, User" />
 
-        <title>Edit Profile</title>
+    <title>Edit Profile</title>
 
-        <!-- Stylesheets -->
-        <link href="//1.www.s81c.com/common/v18/css/www.css" rel="stylesheet" />
-        <link href="//1.www.s81c.com/common/v18/css/tables.css" rel="stylesheet" />
-        <link href="//1.www.s81c.com/common/v18/css/forms.css" rel="stylesheet" />
-        <link href="/css/styles.css" rel="stylesheet" />
-        <link href="/css/profile.css" rel="stylesheet" />
+    <!-- Stylesheets -->
+    <link href="//1.www.s81c.com/common/v18/css/www.css" rel="stylesheet" />
+    <link href="//1.www.s81c.com/common/v18/css/tables.css" rel="stylesheet" />
+    <link href="//1.www.s81c.com/common/v18/css/forms.css" rel="stylesheet" />
+    <link href="/css/styles.css" rel="stylesheet" />
+    <link href="/css/profile.css" rel="stylesheet" />
 
-        <!-- Scripts -->
-        <% include ../common/meta-json %>
+    <!-- Scripts -->
+    <% include ../common/meta-json %>
 
-            <script src="//1.www.s81c.com/common/v18/js/www.js"></script>
-            <script src="//1.www.s81c.com/common/v18/js/tables.js"></script>
-            <script src="//1.www.s81c.com/common/v18/js/forms.js"></script>
+    <script src="//1.www.s81c.com/common/v18/js/www.js"></script>
+    <script src="//1.www.s81c.com/common/v18/js/tables.js"></script>
+    <script src="//1.www.s81c.com/common/v18/js/forms.js"></script>
 
-            <% include ../common/settings %>
+    <% include ../common/settings %>
 </head>
 
 <body id="ibm-com" class="ibm-type">
-    <div id="ibm-top" class="ibm-landing-page">
-        <% include ../common/nav %>
+<div id="ibm-top" class="ibm-landing-page">
+    <% include ../common/nav %>
 
-            <!-- LEADSPACE_BEGIN -->
-            <!-- This is where you put the breadcrumbs/page title. -->
-            <header role="banner" aria-labelledby="ibm-pagetitle-h1">
-                <div id="ibm-leadspace-head" class="ibm-alternate" style="padding: 1em">
-                    <div id="ibm-leadspace-body" style="padding-bottom: 0px;">
-                        <!-- Nav trail -->
-                        <nav role="navigation" aria-label="Breadcrumb">
-                            <ul id="ibm-navigation-trail">
-                                <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
-                                    <a href="/" class="breadcrumb" itemprop="url"><span itemprop="title">Home</span></a>
-                                </li>
-                                <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
-                                    <span itemprop="title">Dashboard</span>
-                                </li>
-                            </ul>
-                        </nav>
+    <!-- LEADSPACE_BEGIN -->
+    <!-- This is where you put the breadcrumbs/page title. -->
+    <header role="banner" aria-labelledby="ibm-pagetitle-h1">
+        <div id="ibm-leadspace-head" class="ibm-alternate" style="padding: 1em">
+            <div id="ibm-leadspace-body" style="padding-bottom: 0px;">
+                <!-- Nav trail -->
+                <nav role="navigation" aria-label="Breadcrumb">
+                    <ul id="ibm-navigation-trail">
+                        <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                            <a href="/" class="breadcrumb" itemprop="url"><span itemprop="title">Home</span></a>
+                        </li>
+                        <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                            <span itemprop="title">Dashboard</span>
+                        </li>
+                    </ul>
+                </nav>
 
-                        <div class="ibm-columns">
-                            <div class="ibm-col-6-5">
-                                <h1 id="ibm-pagetitle-h1" class="ibm-h1 ibm-bold">Hola <%= user.firstName %>!</h1>
-                            </div>
-                        </div>
+                <div class="ibm-columns">
+                    <div class="ibm-col-6-5">
+                        <h1 id="ibm-pagetitle-h1" class="ibm-h1 ibm-bold">Hola <%= user.firstName %>!</h1>
                     </div>
                 </div>
+            </div>
+        </div>
 
-            </header>
-            <!-- LEADSPACE_END -->
+    </header>
+    <!-- LEADSPACE_END -->
 
-            <main role="main" aria-labelledby="ibm-pagetitle-h1">
-                <div id="ibm-pcon">
-                    <div id="ibm-content">
-                        <div id="ibm-content-body">
-                            <div id="ibm-content-main">
+    <main role="main" aria-labelledby="ibm-pagetitle-h1">
+        <div id="ibm-pcon">
+            <div id="ibm-content">
+                <div id="ibm-content-body">
+                    <div id="ibm-content-main">
 
-                                <!-- Content goes here -->
-                                <div class="ibm-columns">
-                                    <!-- Column for dashboard items -->
-                                    <div class="ibm-col-5-1">
-                                        <% include sidebar %>
-                                    </div>
+                        <!-- Content goes here -->
+                        <div class="ibm-columns">
+                            <!-- Column for dashboard items -->
+                            <div class="ibm-col-5-1">
+                                <% include sidebar %>
+                            </div>
 
-                                    <!-- Column for profile card -->
-                                    <div class="ibm-col-5-4">
-                                        <div class="ibm-card">
-                                            <div class="ibm-card__content">
-                                                <h3 class="ibm-h3">
-                          Update Profile
-                          (<a href="/user/<%= user.id %>">View your profile</a>)
-                        </h3>
-                                                <p>You can update your profile using the form below</p>
+                            <!-- Column for profile card -->
+                            <div class="ibm-col-5-4">
+                                <div class="ibm-card">
+                                    <div class="ibm-card__content">
+                                        <h3 class="ibm-h3">
+                                            Update Profile
+                                            (<a href="/user/<%= user.id %>">View your profile</a>)
+                                        </h3>
+                                        <p>You can update your profile using the form below</p>
 
-                                                <form id="profile" class="ibm-row-form" method="post" autocomplete="off">
-                                                    <!-- so chrome doesnt auto complete password -->
-                                                    <input style="display:none">
-                                                    <input type="password" style="display:none">
+                                        <form id="profile" class="ibm-row-form" method="post" autocomplete="off">
+                                            <!-- so chrome doesnt auto complete password -->
+                                            <input style="display:none">
+                                            <input type="password" style="display:none">
 
-                                                    <div class="ibm-columns">
-                                                        <div class="ibm-col-4-2">
-                                                            <p>
-                                                                <label for="firstName">First Name</label>
-                                                                <span>
+                                            <div class="ibm-columns">
+                                                <div class="ibm-col-4-2">
+                                                    <p>
+                                                        <label for="firstName">First Name</label>
+                                                        <span>
                                         <input type="text" size="60" value="<%= user.firstName %>" id="firstName" name="firstName" placeholder="First Name">
                                     </span>
-                                                            </p>
-                                                            <p>
-                                                                <label for="lastName">Last Name</label>
-                                                                <span>
+                                                    </p>
+                                                    <p>
+                                                        <label for="lastName">Last Name</label>
+                                                        <span>
                                         <input type="text" size="60" value="<%= user.lastName %>" id="lastName" name="lastName" placeholder="Last Name">
                                     </span>
-                                                            </p>
-                                                            <p>
-                                                                <label for="email">Email</label>
-                                                                <span>
+                                                    </p>
+                                                    <p>
+                                                        <label for="email">Email</label>
+                                                        <span>
                                         <input type="text" size="60" value="<%= user.email %>" id="email" name="email" placeholder="someone@ca.ibm.com">
                                     </span>
-                                                                <span id="email-error" class="hidden ibm-item-note ibm-alert-link">This email is taken. Try again.</span>
-                                                            </p>
-                                                            <p>
-                                                                <label for="password">Password</label>
-                                                                <span>
+                                                        <span id="email-error" class="hidden ibm-item-note ibm-alert-link">This email is taken. Try again.</span>
+                                                    </p>
+                                                    <p>
+                                                        <label for="password">Password</label>
+                                                        <span>
                                         <input type="password" size="60" placeholder="Password" id="password" name="password" value="">
                                     </span>
-                                                                <span id="password-error" class="hidden ibm-item-note ibm-alert-link">Your password must be 6 or more characters</span>
-                                                            </p>
-                                                            <p>
-                                                                <label for="website">Personal Website</label>
-                                                                <span>
+                                                        <span id="password-error" class="hidden ibm-item-note ibm-alert-link">Your password must be 6 or more characters</span>
+                                                    </p>
+                                                    <p>
+                                                        <label for="website">Personal Website</label>
+                                                        <span>
                                         <input type="text" size="60" value="<%= user.website %>" id="website" name="website" placeholder="http://">
                                     </span>
-                                                            </p>
-                                                            <p>
-                                                                <label for="linkedin">Linkedin Profile</label>
-                                                                <span>
+                                                    </p>
+                                                    <p>
+                                                        <label for="linkedin">Linkedin Profile</label>
+                                                        <span>
                                         <input type="text" size="60" value="<%= user.linkedin %>" id="linkedin" name="linkedin" placeholder="http://">
                                     </span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="ibm-col-4-1">
-                                                            <p>
-                                                                <label for="profile-picture" style="text-align:left">Profile Picture</label>
-                                                                <img src="<%= user.profilePicturePath %>" id="profile-picture" class="ibm-resize" style="max-width:60%" />
-                                                            </p>
-                                                            <form id="profile-pic-form" method="post" enctype="multipart/form-data">
-                                                                <p>
+                                                    </p>
+                                                </div>
+                                                <div class="ibm-col-4-1">
+                                                    <p>
+                                                        <label for="profile-picture" style="text-align:left">Profile Picture</label>
+                                                        <img src="<%= user.profilePicturePath %>" id="profile-picture" class="ibm-resize" style="max-width:60%" />
+                                                    </p>
+                                                    <form id="profile-pic-form" method="post" enctype="multipart/form-data">
+                                                        <p>
                                                                     <span>
                                       <input id="browse-photo" type="file" data-widget="fileinput">
                                     </span>
-                                                                </p>
-                                                                <p>
-                                                                    <input id="upload-btn" class="ibm-btn-pri ibm-btn-blue-50" value="Upload Profile Picture" type="submit">
-                                                                </p>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                    <% if (user && (user.accountType == 'Admin' || user.accountType == 'Blogger')) { %>
-                                                        <p>
-                                                            <label for="signature">Signature</label>
-                                                            <span>
-                                    <textarea rows="8" name="signature" id="signature" placeholder="Please enter a signature that you would like to see at the end of your blog posts"><%= user.signature %></textarea>
-                                </span>
                                                         </p>
-                                                        <% } %>
-                                                            <p>
-                                                                <input id="save-profile" type="button" class="ibm-btn-pri ibm-btn-blue-50" name="save" value="Save">
-                                                            </p>
-                                                </form>
-                                            </div>
-                                            <div class="ibm-card__image">
-                                                <div class="info-message ibm-information-link ibm-inline-link">
-                                                    <p>Looking to update your start/end dates for your internship? Contact <a href="mailto:tmullen@ca.ibm.com,bradleyp@ca.ibm.com">a web lead</a>.
                                                         <p>
+                                                            <input id="upload-btn" class="ibm-btn-pri ibm-btn-blue-50" value="Upload Profile Picture" type="submit">
+                                                        </p>
+                                                    </form>
                                                 </div>
                                             </div>
+                                            <% if (user && (user.accountType == 'Admin' || user.accountType == 'Blogger')) { %>
+                                            <p>
+                                                <label for="signature">Signature</label>
+                                                <span>
+                                    <textarea rows="8" name="signature" id="signature" placeholder="Please enter a signature that you would like to see at the end of your blog posts"><%= user.signature %></textarea>
+                                </span>
+                                            </p>
+                                            <% } %>
+                                            <p>
+                                                <input id="save-profile" type="button" class="ibm-btn-pri ibm-btn-blue-50" name="save" value="Save">
+                                            </p>
+                                        </form>
+                                    </div>
+                                    <div class="ibm-card__image">
+                                        <div class="info-message ibm-information-link ibm-inline-link">
+                                            <p>Looking to update your start/end dates for your internship? Contact <a href="mailto:tmullen@ca.ibm.com,bradleyp@ca.ibm.com">a web lead</a>.
+                                            <p>
                                         </div>
                                     </div>
-                                    <!-- end of profile card -->
-
                                 </div>
-                                <!-- Content ends here -->
-
                             </div>
+                            <!-- end of profile card -->
+
                         </div>
+                        <!-- Content ends here -->
+
                     </div>
-            </main>
-
-            <% include ../common/footer %>
-
                 </div>
+            </div>
+    </main>
 
-                <script src="/libs/jquery.min.js"></script>
-                <script src="/js/profile.js"></script>
-                <script>
-                    $(document).ready(function () {
+    <% include ../common/footer %>
 
-                        var user = <%- JSON.stringify(user) %>;
+</div>
 
-                        $('input[name="firstName"]').val(user.firstName);
-                        $('input[name="lastName"]').val(user.lastName);
-                        $('input[name="email"]').val(user.email);
-                        $('input[name="website"]').val(user.website);
-                        $('input[name="linkedin"]').val(user.linkedin);
+<script src="/libs/jquery.min.js"></script>
+<script src="/js/profile.js"></script>
+<script>
+    $(document).ready(function () {
 
-                        $('#save-profile').click(function () {
-                            var password = $('input[name="password"]').val();
-                            $("#password-error").addClass("hidden");
-                            $("#password").removeClass("ibm-field-error");
+        var user = <%- JSON.stringify(user) %>;
 
-                            if (password && password.length < 5) {
-                                $("#password-error").removeClass("hidden");
-                                $("#password").addClass("ibm-field-error");
-                                return;
-                            }
+        $('input[name="firstName"]').val(user.firstName);
+        $('input[name="lastName"]').val(user.lastName);
+        $('input[name="email"]').val(user.email);
+        $('input[name="website"]').val(user.website);
+        $('input[name="linkedin"]').val(user.linkedin);
 
-                            $.post("/dashboard/profile/edit_profile", {
-                                id: user.id,
-                                firstName: $('input[name="firstName"]').val(),
-                                lastName: $('input[name="lastName"]').val(),
-                                profilePicturePath: $('#profile-picture').attr('src'),
-                                email: $('input[name="email"]').val(),
-                                password: password,
-                                website: $('input[name="website"]').val(),
-                                linkedin: $('input[name="linkedin"]').val(),
-                                signature: $('textarea[name="signature"]').val()
-                            }, function (data) {
-                                console.log(data);
-                                if (data.message === "success") {
-                                    location.reload();
-                                } else if (data.message === "email taken") {
-                                    $("#email-error").removeClass("hidden");
-                                    $("#email").addClass("ibm-field-error");
-                                    return false;
-                                }
-                            });
-                        });
-                    });
-                </script>
+        $('#save-profile').click(function () {
+            var password = $('input[name="password"]').val();
+            $("#password-error").addClass("hidden");
+            $("#password").removeClass("ibm-field-error");
+
+            if (password && password.length < 5) {
+                $("#password-error").removeClass("hidden");
+                $("#password").addClass("ibm-field-error");
+                return;
+            }
+
+            $.post("/dashboard/profile/edit_profile", {
+                id: user.id,
+                firstName: $('input[name="firstName"]').val(),
+                lastName: $('input[name="lastName"]').val(),
+                profilePicturePath: $('#profile-picture').attr('src'),
+                email: $('input[name="email"]').val(),
+                password: password,
+                website: $('input[name="website"]').val(),
+                linkedin: $('input[name="linkedin"]').val(),
+                signature: $('textarea[name="signature"]').val()
+            }, function (data) {
+                console.log(data);
+                if (data.message === "success") {
+                    location.reload();
+                } else if (data.message === "email taken") {
+                    $("#email-error").removeClass("hidden");
+                    $("#email").addClass("ibm-field-error");
+                    return false;
+                }
+            });
+        });
+    });
+</script>
 
 </body>
 

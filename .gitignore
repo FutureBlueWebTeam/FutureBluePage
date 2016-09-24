@@ -3,3 +3,5 @@ node_modules
 config/secret-config.js
 image_uploads
 .vscode
+*.iml
+.idea/

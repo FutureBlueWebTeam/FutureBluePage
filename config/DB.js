@@ -232,11 +232,6 @@ var DB = {
 
 		knex.raw(query).then(function(result) {
 			var photos = result[0];
-
-			for (var i = 0; i < photos.length; i++) {
-				photos[i].thumbnail = Utils.getThumbnailPath(photos[i].path);
-			}
-
 			next(null, photos);
 		}).catch(function(err) {
 			next(err);
@@ -256,8 +251,6 @@ var DB = {
 
 		knex.raw(query).then(function(result) {
 			var photo = result[0][0];
-			photo.thumbnail = Utils.getThumbnailPath(photo.path);
-
 			next(null, photo);
 		}).catch(function(err) {
 			next(err);
