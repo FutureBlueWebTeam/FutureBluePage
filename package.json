@@ -9,6 +9,7 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.13.2",
     "cfenv": "1.0.x",
+    "cloudinary": "^1.8.0",
     "connect-flash": "~0.1.1",
     "connect-mongo": "~0.8.2",
     "ejs": "2.3.2",
