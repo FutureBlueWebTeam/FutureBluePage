@@ -39,7 +39,6 @@ router.post('/profile/upload_profile_picture', Auth.isLoggedIn, function (req, r
     var form = new formidable.IncomingForm();
     form.uploadDir = "./public/image_uploads/profile";
     form.keepExtensions = true;
-    console.log('fuck')
     form.parse(req, function (err, fields, files) {
         if (err) {
             res.render('error', {
@@ -59,7 +58,6 @@ router.post('/profile/upload_profile_picture', Auth.isLoggedIn, function (req, r
         var imagePath = Utils.escapeHtml(files.file.path.replace(/\\/g, "/"));
 
         gm(imagePath).resize(600, null, "^>").gravity('center').write(imagePath, function (err) {
-            console.log('you')
             if (err) {
                 res.render('error', {
                     user: req.user,
@@ -73,7 +71,6 @@ router.post('/profile/upload_profile_picture', Auth.isLoggedIn, function (req, r
             
             // Backup and serve from cloudinary
             cloudinary.uploader.upload(imagePath, function (result) {
-                console.log(result)
                 res.send({src: result.secure_url});
             })
         });
