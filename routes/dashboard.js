@@ -389,7 +389,7 @@ router.post('/blog/edit/upload_featured_image', Auth.isBlogger, function (req, r
 router.post('/blog/edit/update/:id', Auth.isBlogger, function (req, res, next) {
     knex('posts').where('id', req.params.id).update({
         title: Utils.escapeHtml(req.body.titleVal),
-        htmlBody: Utils.escapeHtml(req.body.bodyVal),
+        htmlBody: req.body.bodyVal, //Purposefully not escaped
         category: Utils.escapeHtml(req.body.catVal),
         tags: req.body.tags instanceof Array ? JSON.stringify(req.body.tags.map(
             function (t) {
