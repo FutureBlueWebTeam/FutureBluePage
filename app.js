@@ -120,6 +120,6 @@ app.use(function (req, res, next) {
 /*app.listen(appEnv.port, '0.0.0.0', function () {
     console.log("server starting on " + appEnv.url);
 });*/
-app.listen(8745, '0.0.0.0', function () {
+app.listen(80, '0.0.0.0', function () {
     console.log("Server started! Have a nice day!");
 });

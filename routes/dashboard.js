@@ -5,9 +5,20 @@ var Utils = require('../config/Utils.js');
 var DB = require('../config/DB.js');
 var bcrypt = require('bcrypt-nodejs');
 var formidable = require('formidable');
-var fs = require('fs');
-var gm = require('gm').subClass({imageMagick: true});
+var cloudinary = require('cloudinary');
 var router = express.Router();
+var gm = require('gm').subClass({imageMagick: true});
+
+var configFilename = "../config/secret-config.js";
+var config;
+try {
+    config = require(configFilename);
+} catch (err) {
+    config = {};
+    console.log("ERROR: unable to read file '" + configFilename + "' : ", err);
+}
+
+cloudinary.config(config.cloudinary)
 
 /* GET dashboard page. */
 router.get('/', Auth.isLoggedIn, function (req, res, next) {
@@ -57,10 +68,14 @@ router.post('/profile/upload_profile_picture', Auth.isLoggedIn, function (req, r
 
                 return;
             }
-
-            imagePath = imagePath.replace(/public/, "");
-            res.send({src: imagePath});
+            
+            // Backup and serve from cloudinary
+            cloudinary.uploader.upload(imagePath, function (result) {
+                res.send({src: result.secure_url});
+            })
         });
+      
+        
     });
 });
 
@@ -179,18 +194,19 @@ router.post('/blog/create-post/upload_image', Auth.isBlogger, function (req, res
                         icon: 'remove'
                     });
                 } else {
-                    imagePath = imagePath.replace(/public/, "");
+                    // Backup and serve from cloudinary
+                    cloudinary.uploader.upload(imagePath, function (result) {                    
+                        var html = "";
+                        html += "<script type='text/javascript'>";
+                        html += "    var funcNum = " + req.query.CKEditorFuncNum + ";";
+                        html += "    var url     = \"" + result.secure_url + "\";";
+                        html += "    var message = \"Uploaded file successfully\";";
+                        html += "";
+                        html += "    window.parent.CKEDITOR.tools.callFunction(funcNum, url, message);";
+                        html += "</script>";
 
-                    var html = "";
-                    html += "<script type='text/javascript'>";
-                    html += "    var funcNum = " + req.query.CKEditorFuncNum + ";";
-                    html += "    var url     = \"" + imagePath + "\";";
-                    html += "    var message = \"Uploaded file successfully\";";
-                    html += "";
-                    html += "    window.parent.CKEDITOR.tools.callFunction(funcNum, url, message);";
-                    html += "</script>";
-
-                    res.send(html);
+                        res.send(html);
+                    })
                 }
             });
         }
@@ -222,8 +238,9 @@ router.post('/blog/create-post/upload_featured_image', Auth.isBlogger, function 
                         icon: 'remove'
                     });
                 } else {
-                    imagePath = imagePath.replace(/public/, "");
-                    res.send({src: imagePath});
+                    cloudinary.uploader.upload(imagePath, function (result) { 
+                        res.send({src: result.secure_url});             
+                    })
                 }
             });
         }
@@ -316,18 +333,19 @@ router.post('/blog/edit/upload_image', Auth.isBlogger, function (req, res, next)
                         icon: 'remove'
                     });
                 } else {
-                    imagePath = imagePath.replace(/public/, "");
+                    cloudinary.uploader.upload(imagePath, function (result) { 
 
-                    var html = "";
-                    html += "<script type='text/javascript'>";
-                    html += "    var funcNum = " + req.query.CKEditorFuncNum + ";";
-                    html += "    var url     = \"" + imagePath + "\";";
-                    html += "    var message = \"Uploaded file successfully\";";
-                    html += "";
-                    html += "    window.parent.CKEDITOR.tools.callFunction(funcNum, url, message);";
-                    html += "</script>";
+                        var html = "";
+                        html += "<script type='text/javascript'>";
+                        html += "    var funcNum = " + req.query.CKEditorFuncNum + ";";
+                        html += "    var url     = \"" + result.secure_url + "\";";
+                        html += "    var message = \"Uploaded file successfully\";";
+                        html += "";
+                        html += "    window.parent.CKEDITOR.tools.callFunction(funcNum, url, message);";
+                        html += "</script>";
 
-                    res.send(html);
+                        res.send(html);
+                    })
                 }
             });
 
@@ -359,8 +377,9 @@ router.post('/blog/edit/upload_featured_image', Auth.isBlogger, function (req, r
                         icon: 'remove'
                     });
                 } else {
-                    imagePath = imagePath.replace(/public/, "");
-                    res.send({src: imagePath});
+                    cloudinary.uploader.upload(imagePath, function (result) { 
+                        res.send({src: result.secure_url});    
+                    })
                 }
             });
         }
@@ -540,7 +559,7 @@ router.post('/gallery/upload_photos', Auth.isBlogger, function (req, res, next) 
         }
     });
 
-    // Note, this will upload the photos, plus some empty file that is unneeded.
+    // Note, this will upload the photos, plus some empty file that is unneeded. - wut?
     form.parse(req, function (err, fields, files) {
         if (err) {
             res.render('error', {
